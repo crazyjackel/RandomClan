@@ -5,8 +5,8 @@ schemaVersion = "0.0.1"
 namespace = "crazy_MT2"
 name = "Random_Clan"
 versionNumber = "0.1.0"
-description = "A fully randomly generated clan"
-websiteUrl = "https://thunderstore.io"
+description = "A clan that rebuilds itself each run from other clans' cards, then applies Chaos modifications."
+websiteUrl = "https://thunderstore.io/c/monster-train-2/"
 containsNsfwContent = false
 
 [package.dependencies]
