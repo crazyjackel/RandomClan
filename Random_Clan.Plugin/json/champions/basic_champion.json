@@ -19,7 +19,7 @@
       ],
       "traits": [
         "@Randomized",
-        "@ChampionModifier5"
+        "@ChampionModifier3"
       ]
     }
   ],
