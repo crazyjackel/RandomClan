@@ -24,7 +24,6 @@ namespace Random_Clan.Plugin.Copying
 
         private void CopySpellLikeOnto(CardData slot, CardData donor)
         {
-            slot.SetNameKey(donor.GetNameKey());
             var desc = donor.GetDescriptionKey();
             if (!string.IsNullOrEmpty(desc))
                 slot.SetDescriptionKey(desc!);
@@ -62,7 +61,6 @@ namespace Random_Clan.Plugin.Copying
 
         private void CopyUnitOnto(CardData slot, CardData donor)
         {
-            slot.SetNameKey(donor.GetNameKey());
             var desc = donor.GetDescriptionKey();
             if (!string.IsNullOrEmpty(desc))
                 slot.SetDescriptionKey(desc!);
@@ -118,7 +116,6 @@ namespace Random_Clan.Plugin.Copying
                 }
             }
 
-            slot.SetNameKey(donor.GetNameKey());
             var art = AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.GetValue(donor);
             if (art != null)
                 AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.SetValue(slot, art);

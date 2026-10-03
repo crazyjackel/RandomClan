@@ -2,7 +2,7 @@ using Random_Clan.Plugin.Extensions;
 
 namespace Random_Clan.Plugin.Modifications.Units
 {
-    public sealed class AttackAdjustmentModification : ICardModification
+    public sealed class HealthFixedModification : ICardModification
     {
         public bool CanModify(CardData card, RandomizeContext ctx)
             => (ctx.Character ?? card.GetSpawnCharacterData()) != null;
@@ -12,7 +12,7 @@ namespace Random_Clan.Plugin.Modifications.Units
             var character = ctx.Character ?? card.GetSpawnCharacterData();
             if (character == null)
                 return;
-            character.SetAttackDamage(Math.Max(1, character.GetAttackDamage()).MutateBalanced(rng));
+            character.SetHealth(Math.Max(1, character.GetHealth()).MutateFixed(rng));
         }
     }
 }

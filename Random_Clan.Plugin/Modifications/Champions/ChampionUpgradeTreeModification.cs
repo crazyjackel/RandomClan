@@ -5,6 +5,9 @@ namespace Random_Clan.Plugin.Modifications.Champions
 {
     public sealed class ChampionUpgradeTreeModification : ICardModification
     {
+        private const int PathCount = 3;
+        private const int TiersPerPath = 3;
+
         public bool CanModify(CardData card, RandomizeContext ctx)
             => card.IsChampionCard() && ctx.ChampionUpgradePool.Count > 0;
 
@@ -25,29 +28,59 @@ namespace Random_Clan.Plugin.Modifications.Champions
                     if (tree == null)
                         continue;
 
-                    var upgradeTrees = AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.GetValue(tree)
-                        as List<CardUpgradeTreeData.UpgradeTree>;
-                    if (upgradeTrees == null || upgradeTrees.Count == 0)
+                    var available = ctx.ChampionUpgradePool.ToList();
+                    Shuffle(available, rng);
+
+                    var upgradeTrees = new List<CardUpgradeTreeData.UpgradeTree>(PathCount);
+                    for (var path = 0; path < PathCount; path++)
                     {
-                        upgradeTrees = [new CardUpgradeTreeData.UpgradeTree()];
-                        AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.SetValue(tree, upgradeTrees);
+                        var picked = TakeUpgrades(available, ctx.ChampionUpgradePool, rng, TiersPerPath);
+                        picked.Sort((a, b) =>
+                            (a.GetBonusDamage() + a.GetBonusHP()).CompareTo(b.GetBonusDamage() + b.GetBonusHP()));
+
+                        var upgradeTree = new CardUpgradeTreeData.UpgradeTree();
+                        AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades")
+                            ?.SetValue(upgradeTree, picked);
+                        upgradeTrees.Add(upgradeTree);
                     }
 
-                    foreach (var upgradeTree in upgradeTrees)
-                    {
-                        var available = ctx.ChampionUpgradePool.ToList();
-                        var picked = new List<CardUpgradeData>();
-                        while (picked.Count < 3 && available.Count > 0)
-                        {
-                            var idx = rng.Next(available.Count);
-                            picked.Add(available[idx]);
-                            available.RemoveAt(idx);
-                        }
-                        picked.Sort((a, b) => (a.GetBonusDamage() + a.GetBonusHP()).CompareTo(b.GetBonusDamage() + b.GetBonusHP()));
-                        AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades")?.SetValue(upgradeTree, picked);
-                        Plugin.Logger.LogInfo($"Champion tree rebuilt with {picked.Count} upgrades for {card.name}");
-                    }
+                    AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.SetValue(tree, upgradeTrees);
+                    Plugin.Logger.LogInfo(
+                        $"Champion tree rebuilt with {PathCount} paths x {TiersPerPath} tiers for {card.name}");
                 }
+            }
+        }
+
+        private static List<CardUpgradeData> TakeUpgrades(
+            List<CardUpgradeData> available,
+            IReadOnlyList<CardUpgradeData> fallbackPool,
+            Random rng,
+            int count)
+        {
+            var picked = new List<CardUpgradeData>(count);
+            while (picked.Count < count)
+            {
+                if (available.Count == 0)
+                {
+                    if (fallbackPool.Count == 0)
+                        break;
+                    available.AddRange(fallbackPool);
+                    Shuffle(available, rng);
+                }
+
+                var idx = rng.Next(available.Count);
+                picked.Add(available[idx]);
+                available.RemoveAt(idx);
+            }
+            return picked;
+        }
+
+        private static void Shuffle<T>(IList<T> list, Random rng)
+        {
+            for (var i = list.Count - 1; i > 0; i--)
+            {
+                var j = rng.Next(i + 1);
+                (list[i], list[j]) = (list[j], list[i]);
             }
         }
     }

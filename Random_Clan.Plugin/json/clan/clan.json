@@ -64,9 +64,19 @@
           "starter_card": "@ChampionAStarterCard",
           "upgrade_tree": [
             [
-              "@ChampionAUpgradePathI",
-              "@ChampionAUpgradePathII",
-              "@ChampionAUpgradePathIII"
+              "@ChampionAPathA1",
+              "@ChampionAPathA2",
+              "@ChampionAPathA3"
+            ],
+            [
+              "@ChampionAPathB1",
+              "@ChampionAPathB2",
+              "@ChampionAPathB3"
+            ],
+            [
+              "@ChampionAPathC1",
+              "@ChampionAPathC2",
+              "@ChampionAPathC3"
             ]
           ],
           "icon": "@ChampionAIcon",

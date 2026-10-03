@@ -7,8 +7,20 @@ namespace Random_Clan.Plugin.Extensions
         public static int MutateBalanced(this int value, Random rng)
         {
             if (rng.NextDouble() < 0.5)
-                return Math.Max(1, value + ModificationTuning.NumberSteps[rng.Next(ModificationTuning.NumberSteps.Length)]);
-            return Math.Max(1, (int)Math.Round(value * ModificationTuning.NumberScales[rng.Next(ModificationTuning.NumberScales.Length)]));
+                return value.MutateFixed(rng, ModificationTuning.NumberSteps);
+            return value.MutateScaled(rng, ModificationTuning.NumberScales);
         }
+
+        public static int MutateFixed(this int value, Random rng)
+            => value.MutateFixed(rng, ModificationTuning.StatSteps);
+
+        public static int MutateFixed(this int value, Random rng, int[] steps)
+            => Math.Max(1, value + steps[rng.Next(steps.Length)]);
+
+        public static int MutateScaled(this int value, Random rng)
+            => value.MutateScaled(rng, ModificationTuning.StatScales);
+
+        public static int MutateScaled(this int value, Random rng, float[] scales)
+            => Math.Max(1, (int)Math.Round(value * scales[rng.Next(scales.Length)]));
     }
 }

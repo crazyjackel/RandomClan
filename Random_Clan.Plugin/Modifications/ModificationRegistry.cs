@@ -16,8 +16,11 @@ namespace Random_Clan.Plugin.Modifications
             Register(new StatusCountModification());
             Register(new StatusSwapModification());
             Register(new TraitParamModification());
-            Register(new HealthAdjustmentModification());
-            Register(new AttackAdjustmentModification());
+            Register(new HealthFixedModification());
+            Register(new HealthMultiplicativeModification());
+            Register(new AttackFixedModification());
+            Register(new AttackMultiplicativeModification());
+            Register(new SizeFixedModification());
             Register(new RoomUpgradeNumberModification());
             Register(new ChampionUpgradeTreeModification());
         }
