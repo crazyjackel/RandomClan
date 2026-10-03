@@ -16,7 +16,11 @@ namespace Random_Clan.Plugin.Modifications.Cards
             ctx.Character?.AdjustStartingStatuses(rng, swap: false);
         }
 
-        internal static void AdjustCardStatuses(CardData card, Random rng, bool swap)
+        internal static void AdjustCardStatuses(
+            CardData card,
+            Random rng,
+            bool swap,
+            IReadOnlyList<string>? statusIds = null)
         {
             var effects = card.GetEffects();
             if (effects == null)
@@ -34,7 +38,9 @@ namespace Random_Clan.Plugin.Modifications.Cards
                 {
                     if (swap)
                     {
-                        var next = statuses[i].statusId.TrySwapStatus(rng);
+                        if (statusIds == null)
+                            continue;
+                        var next = statuses[i].statusId.TrySwapStatus(rng, statusIds);
                         if (next != null)
                             statuses[i].statusId = next;
                     }

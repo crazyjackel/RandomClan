@@ -7,6 +7,7 @@ using TrainworksReloaded.Base;
 using TrainworksReloaded.Base.Card;
 using TrainworksReloaded.Base.CardUpgrade;
 using TrainworksReloaded.Base.Class;
+using TrainworksReloaded.Base.StatusEffects;
 using TrainworksReloaded.Base.Trait;
 
 namespace Random_Clan.Plugin
@@ -17,6 +18,7 @@ namespace Random_Clan.Plugin
         private readonly CardTraitDataRegister _traits;
         private readonly ClassDataRegister _classes;
         private readonly CardUpgradeRegister _upgrades;
+        private readonly StatusEffectDataRegister _statuses;
         private readonly GameDataClient _client;
         private readonly ModificationRegistry _modifications;
         private readonly CardDonorCopier _copier;
@@ -29,6 +31,7 @@ namespace Random_Clan.Plugin
             CardTraitDataRegister traits,
             ClassDataRegister classes,
             CardUpgradeRegister upgrades,
+            StatusEffectDataRegister statuses,
             GameDataClient client,
             ModificationRegistry modifications,
             CardDonorCopier copier)
@@ -37,6 +40,7 @@ namespace Random_Clan.Plugin
             _traits = traits;
             _classes = classes;
             _upgrades = upgrades;
+            _statuses = statuses;
             _client = client;
             _modifications = modifications;
             _copier = copier;
@@ -77,7 +81,7 @@ namespace Random_Clan.Plugin
             var donors = BuildDonorPools(all);
             var upgradePool = BuildChampionUpgradePool(all);
 
-            var ctx = new RandomizeContext(saveManager, _cards, _traits, _classes, _upgrades, _client)
+            var ctx = new RandomizeContext(saveManager, _cards, _traits, _classes, _upgrades, _statuses, _client)
             {
                 ChampionUpgradePool = upgradePool,
             };

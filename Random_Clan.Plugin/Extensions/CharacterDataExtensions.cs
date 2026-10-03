@@ -44,7 +44,11 @@ namespace Random_Clan.Plugin.Extensions
             return false;
         }
 
-        public static void AdjustStartingStatuses(this CharacterData character, Random rng, bool swap)
+        public static void AdjustStartingStatuses(
+            this CharacterData character,
+            Random rng,
+            bool swap,
+            IReadOnlyList<string>? statusIds = null)
         {
             foreach (var fieldName in StartingStatusFields)
             {
@@ -56,7 +60,9 @@ namespace Random_Clan.Plugin.Extensions
                 {
                     if (swap)
                     {
-                        var next = statuses[i].statusId.TrySwapStatus(rng);
+                        if (statusIds == null)
+                            continue;
+                        var next = statuses[i].statusId.TrySwapStatus(rng, statusIds);
                         if (next != null)
                             statuses[i].statusId = next;
                     }
