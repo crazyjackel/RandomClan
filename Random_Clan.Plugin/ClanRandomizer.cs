@@ -268,18 +268,23 @@ namespace Random_Clan.Plugin
 
         private static int ReadRunSeed(SaveManager saveManager)
         {
-            foreach (var name in new[] { "GetRunSeed", "GetSeed", "GetCurrentSeed", "GetRngSeed" })
+            try
             {
-                var method = AccessTools.Method(typeof(SaveManager), name);
-                if (method != null && method.GetParameters().Length == 0 && method.Invoke(saveManager, null) is int i)
-                    return i;
+                var conditions = saveManager.GetStartingConditions();
+                if (conditions != null)
+                    return conditions.Seed;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogWarning($"GetStartingConditions.Seed failed: {ex.Message}");
             }
 
-            foreach (var name in new[] { "runSeed", "seed", "_runSeed", "currentSeed", "rngSeed" })
+            var forceSeed = AccessTools.Field(typeof(SaveManager), "forceSeed");
+            if (forceSeed?.FieldType == typeof(int))
             {
-                var field = AccessTools.Field(typeof(SaveManager), name);
-                if (field != null && field.FieldType == typeof(int))
-                    return (int)field.GetValue(saveManager)!;
+                var value = (int)forceSeed.GetValue(saveManager)!;
+                if (value != 0)
+                    return value;
             }
 
             Plugin.Logger.LogWarning("Could not resolve run seed; using TickCount fallback.");

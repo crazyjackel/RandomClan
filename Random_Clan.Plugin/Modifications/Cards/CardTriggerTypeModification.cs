@@ -5,17 +5,13 @@ namespace Random_Clan.Plugin.Modifications.Cards
 {
     public sealed class CardTriggerTypeModification : ICardModification
     {
-        private static readonly CardTriggerType[] Options = Enum.GetValues(typeof(CardTriggerType))
-            .Cast<CardTriggerType>()
-            .ToArray();
-
         public bool CanModify(CardData card, RandomizeContext ctx)
-            => card.GetTriggerList().Count > 0 && Options.Length > 1;
+            => card.GetTriggerList().Count > 0 && ctx.SwappableCardTriggers.Count > 1;
 
         public void Modify(CardData card, RandomizeContext ctx, Random rng)
         {
             var triggers = card.GetTriggerList();
-            if (triggers.Count == 0)
+            if (triggers.Count == 0 || ctx.SwappableCardTriggers.Count < 2)
                 return;
 
             var trigger = triggers[rng.Next(triggers.Count)];
@@ -24,11 +20,14 @@ namespace Random_Clan.Plugin.Modifications.Cards
                 return;
 
             var current = (CardTriggerType)field.GetValue(trigger)!;
+            var options = ctx.SwappableCardTriggers;
             CardTriggerType next;
+            var attempts = 0;
             do
             {
-                next = Options[rng.Next(Options.Length)];
-            } while (next.Equals(current) && Options.Length > 1);
+                next = options[rng.Next(options.Count)];
+                attempts++;
+            } while (next.Equals(current) && attempts < 8);
 
             field.SetValue(trigger, next);
         }

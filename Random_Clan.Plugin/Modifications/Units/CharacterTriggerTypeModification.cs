@@ -5,21 +5,18 @@ namespace Random_Clan.Plugin.Modifications.Units
 {
     public sealed class CharacterTriggerTypeModification : ICardModification
     {
-        private static readonly CharacterTriggerData.Trigger[] Options =
-            Enum.GetValues(typeof(CharacterTriggerData.Trigger))
-                .Cast<CharacterTriggerData.Trigger>()
-                .ToArray();
-
         public bool CanModify(CardData card, RandomizeContext ctx)
         {
+            if (ctx.SwappableCharacterTriggers.Count < 2)
+                return false;
             var character = ctx.Character ?? card.GetSpawnCharacterData();
-            return character != null && character.GetTriggerList().Count > 0 && Options.Length > 1;
+            return character != null && character.GetTriggerList().Count > 0;
         }
 
         public void Modify(CardData card, RandomizeContext ctx, Random rng)
         {
             var character = ctx.Character ?? card.GetSpawnCharacterData();
-            if (character == null)
+            if (character == null || ctx.SwappableCharacterTriggers.Count < 2)
                 return;
 
             var triggers = character.GetTriggerList();
@@ -32,11 +29,14 @@ namespace Random_Clan.Plugin.Modifications.Units
                 return;
 
             var current = (CharacterTriggerData.Trigger)field.GetValue(trigger)!;
+            var options = ctx.SwappableCharacterTriggers;
             CharacterTriggerData.Trigger next;
+            var attempts = 0;
             do
             {
-                next = Options[rng.Next(Options.Length)];
-            } while (next.Equals(current) && Options.Length > 1);
+                next = options[rng.Next(options.Count)];
+                attempts++;
+            } while (next.Equals(current) && attempts < 8);
 
             field.SetValue(trigger, next);
         }

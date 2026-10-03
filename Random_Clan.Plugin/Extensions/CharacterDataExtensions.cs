@@ -4,8 +4,6 @@ namespace Random_Clan.Plugin.Extensions
 {
     public static class CharacterDataExtensions
     {
-        private static readonly string[] StartingStatusFields = ["startingStatusEffects", "statusEffectStacks"];
-
         public static void SetHealth(this CharacterData character, int health)
             => AccessTools.Field(typeof(CharacterData), "health")?.SetValue(character, health);
 
@@ -33,73 +31,22 @@ namespace Random_Clan.Plugin.Extensions
         public static void SetNameKey(this CharacterData character, string nameKey)
             => AccessTools.Field(typeof(CharacterData), "nameKey")?.SetValue(character, nameKey);
 
+        public static StatusEffectStackData[] GetStartingStatusEffectsArray(this CharacterData character)
+            => AccessTools.Field(typeof(CharacterData), "startingStatusEffects")?.GetValue(character) as StatusEffectStackData[]
+               ?? [];
+
+        public static void SetStartingStatusEffectsArray(this CharacterData character, StatusEffectStackData[] statuses)
+            => AccessTools.Field(typeof(CharacterData), "startingStatusEffects")?.SetValue(character, statuses);
+
         public static void CopyStartingStatusesFrom(this CharacterData slot, CharacterData donor)
         {
-            foreach (var fieldName in StartingStatusFields)
-            {
-                var field = AccessTools.Field(typeof(CharacterData), fieldName);
-                if (field == null)
-                    continue;
-                var value = field.GetValue(donor);
-                if (value is Array arr)
-                {
-                    field.SetValue(slot, arr.Clone());
-                    return;
-                }
-                if (value is System.Collections.IList list)
-                {
-                    var copy = Activator.CreateInstance(list.GetType()) as System.Collections.IList;
-                    if (copy == null)
-                        return;
-                    foreach (var item in list)
-                        copy.Add(item);
-                    field.SetValue(slot, copy);
-                    return;
-                }
-            }
-        }
-
-        public static bool HasStartingStatuses(this CharacterData character)
-        {
-            foreach (var fieldName in StartingStatusFields)
-            {
-                var field = AccessTools.Field(typeof(CharacterData), fieldName);
-                if (field?.GetValue(character) is StatusEffectStackData[] statuses && statuses.Length > 0)
-                    return true;
-            }
-            return false;
-        }
-
-        public static void AdjustStartingStatuses(
-            this CharacterData character,
-            Random rng,
-            bool swap,
-            IReadOnlyList<string>? statusIds = null)
-        {
-            foreach (var fieldName in StartingStatusFields)
-            {
-                var field = AccessTools.Field(typeof(CharacterData), fieldName);
-                if (field?.GetValue(character) is not StatusEffectStackData[] statuses || statuses.Length == 0)
-                    continue;
-
-                for (var i = 0; i < statuses.Length; i++)
-                {
-                    if (swap)
-                    {
-                        if (statusIds == null)
-                            continue;
-                        var next = statuses[i].statusId.TrySwapStatus(rng, statusIds);
-                        if (next != null)
-                            statuses[i].statusId = next;
-                    }
-                    else
-                    {
-                        statuses[i].count = Math.Max(1, Math.Max(1, statuses[i].count).MutateBalanced(rng));
-                    }
-                }
-                field.SetValue(character, statuses);
+            var field = AccessTools.Field(typeof(CharacterData), "startingStatusEffects");
+            if (field == null)
                 return;
-            }
+
+            var value = field.GetValue(donor);
+            if (value is Array arr)
+                field.SetValue(slot, arr.Clone());
         }
     }
 }

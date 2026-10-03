@@ -1,17 +1,14 @@
-using HarmonyLib;
 using Random_Clan.Plugin.Extensions;
 
 namespace Random_Clan.Plugin.Modifications
 {
     internal static class StatusModificationHelper
     {
-        private static readonly string[] StartingStatusFields = ["startingStatusEffects", "statusEffectStacks"];
-
         public static bool HasCardStatusEntries(CardData card)
             => CollectCardEntries(card).Count > 0;
 
         public static bool HasStartingStatusEntries(CharacterData? character)
-            => character != null && GetStartingStatuses(character) is { Length: > 0 };
+            => character != null && character.GetStartingStatusEffectsArray().Length > 0;
 
         public static bool TryAdjustSingleCardStatus(
             CardData card,
@@ -37,20 +34,16 @@ namespace Random_Clan.Plugin.Modifications
             bool swap,
             IReadOnlyList<string>? statusIds = null)
         {
-            foreach (var fieldName in StartingStatusFields)
-            {
-                var field = AccessTools.Field(typeof(CharacterData), fieldName);
-                if (field?.GetValue(character) is not StatusEffectStackData[] statuses || statuses.Length == 0)
-                    continue;
+            var statuses = character.GetStartingStatusEffectsArray();
+            if (statuses.Length == 0)
+                return false;
 
-                var index = rng.Next(statuses.Length);
-                if (!AdjustEntry(statuses, index, rng, swap, statusIds))
-                    return false;
+            var index = rng.Next(statuses.Length);
+            if (!AdjustEntry(statuses, index, rng, swap, statusIds))
+                return false;
 
-                field.SetValue(character, statuses);
-                return true;
-            }
-            return false;
+            character.SetStartingStatusEffectsArray(statuses);
+            return true;
         }
 
         public static bool TryInjectStartingStatus(
@@ -61,12 +54,7 @@ namespace Random_Clan.Plugin.Modifications
             if (statusIds.Count == 0)
                 return false;
 
-            var field = AccessTools.Field(typeof(CharacterData), "startingStatusEffects")
-                ?? AccessTools.Field(typeof(CharacterData), "statusEffectStacks");
-            if (field == null)
-                return false;
-
-            var existing = field.GetValue(character) as StatusEffectStackData[] ?? [];
+            var existing = character.GetStartingStatusEffectsArray();
             var next = new StatusEffectStackData[existing.Length + 1];
             for (var i = 0; i < existing.Length; i++)
                 next[i] = existing[i];
@@ -76,7 +64,7 @@ namespace Random_Clan.Plugin.Modifications
                 statusId = statusIds[rng.Next(statusIds.Count)],
                 count = Math.Max(1, 1.MutateBalanced(rng)),
             };
-            field.SetValue(character, next);
+            character.SetStartingStatusEffectsArray(next);
             return true;
         }
 
@@ -99,17 +87,6 @@ namespace Random_Clan.Plugin.Modifications
                     entries.Add((effect, statuses, i));
             }
             return entries;
-        }
-
-        private static StatusEffectStackData[]? GetStartingStatuses(CharacterData character)
-        {
-            foreach (var fieldName in StartingStatusFields)
-            {
-                var field = AccessTools.Field(typeof(CharacterData), fieldName);
-                if (field?.GetValue(character) is StatusEffectStackData[] statuses && statuses.Length > 0)
-                    return statuses;
-            }
-            return null;
         }
 
         private static bool AdjustEntry(
