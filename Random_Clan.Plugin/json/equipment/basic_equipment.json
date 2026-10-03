@@ -6,8 +6,8 @@
       "cost": 2,
       "card_type": "equipment",
       "names": {
-        "english": "Basic Equipment",
-        "chinese": "示例装备"
+        "english": "Odd Harness",
+        "chinese": "古怪挽具"
       },
       "descriptions": {
         "english": "[effect0.upgrade.bonussize][capacity]. Cannot reduce [capacity] below 1.",
@@ -32,7 +32,7 @@
       ],
       "lore_tooltips": [
         {
-          "english": "Example equipment. Equipment is available to acquire in events (Red Crown, Plague Doctor) and Truffles (FreeEquipmentMutatorPool). RoomAndEquipmentMerchant_EquipmentPool is required. EquipmentPoolNonEnemy is for Swordmaiden.",
+          "english": "An irregular strap that somehow counts as gear.",
           "chinese": "这个装备也可以在事件中获得。RoomAndEquipmentMerchant_EquipmentPool是必选的。FreeEquipmentMutatorPool对应松露犬，EquipmentPoolNonEnemy对应持剑侍女。"
         }
       ]

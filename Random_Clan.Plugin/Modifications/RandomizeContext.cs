@@ -8,12 +8,28 @@ namespace Random_Clan.Plugin.Modifications
 {
     public sealed class RandomizeContext
     {
-        public required SaveManager SaveManager { get; init; }
-        public required CardDataRegister Cards { get; init; }
-        public required CardTraitDataRegister Traits { get; init; }
-        public required ClassDataRegister Classes { get; init; }
-        public required CardUpgradeRegister Upgrades { get; init; }
-        public required GameDataClient Client { get; init; }
+        public RandomizeContext(
+            SaveManager saveManager,
+            CardDataRegister cards,
+            CardTraitDataRegister traits,
+            ClassDataRegister classes,
+            CardUpgradeRegister upgrades,
+            GameDataClient client)
+        {
+            SaveManager = saveManager;
+            Cards = cards;
+            Traits = traits;
+            Classes = classes;
+            Upgrades = upgrades;
+            Client = client;
+        }
+
+        public SaveManager SaveManager { get; }
+        public CardDataRegister Cards { get; }
+        public CardTraitDataRegister Traits { get; }
+        public ClassDataRegister Classes { get; }
+        public CardUpgradeRegister Upgrades { get; }
+        public GameDataClient Client { get; }
         public CharacterData? Character { get; set; }
         public List<CardUpgradeData> ChampionUpgradePool { get; set; } = [];
     }

@@ -8,15 +8,15 @@
         "chinese": "随机"
       },
       "descriptions": {
-        "english": "A clan remade from other clans each run.",
+        "english": "A fortuitous mess of borrowed cards, remade each run.",
         "chinese": "每局从其他氏族随机重铸。"
       },
       "subclass_descriptions": {
-        "english": "A clan remade from other clans each run.",
+        "english": "An unplanned ally clan stitched from leftovers.",
         "chinese": "每局从其他氏族随机重铸。"
       },
       "event_titles": {
-        "english": "<wonderous>Random citizen</wonderous>"
+        "english": "<wonderous>Slapdash citizen</wonderous>"
       },
       "icons": {
         "small": "@BasicClanSmallIcon",

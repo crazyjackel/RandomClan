@@ -6,12 +6,8 @@
       "cost": 2,
       "card_type": "room",
       "names": {
-        "english": "Basic Room",
-        "chinese": "示例房间"
-      },
-      "descriptions": {
-        "english": "+[effect0.upgrade.roommodifier0.power][capacity]. Grant friendly units +[effect0.upgrade.bonusdamage][attack] and +[effect0.upgrade.bonushp][health]",
-        "chinese": "示例房间"
+        "english": "Contingent Bastion",
+        "chinese": "偶然堡垒"
       },
       "rarity": "uncommon",
       "targets_room": true,
@@ -25,12 +21,6 @@
         "RoomAndEquipmentMerchant_RoomPool",
         "RoomAndEquipmentDraftPool",
         "TrainRoomPool"
-      ],
-      "lore_tooltips": [
-        {
-          "english": "Example room. RoomAndEquipmentMerchant_RoomPool is required if adding to an event/mutator pool. TrainRoomPool is the pool for the It's Free Real Estate Mutator.",
-          "chinese": "RoomAndEquipmentMerchant_RoomPool对应事件/转变器，TrainRoomPool对应“免费房地产”转变器。"
-        }
       ]
     }
   ],

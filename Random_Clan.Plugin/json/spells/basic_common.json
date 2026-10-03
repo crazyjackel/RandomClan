@@ -6,12 +6,8 @@
       "cost": 2,
       "card_type": "spell",
       "names": {
-        "english": "Common Card",
-        "chinese": "示例法术"
-      },
-      "descriptions": {
-        "english": "Apply [dazed] [effect0.status0.power] and [mute] [effect1.status0.power] to an enemy unit.",
-        "chinese": "对一个敌方单位施加[dazed] [effect0.status0.power] 和[mute] [effect1.status0.power]。"
+        "english": "Desultory Hex",
+        "chinese": "散漫诅咒"
       },
       "rarity": "common",
       "targets_room": true,
@@ -23,13 +19,7 @@
         "@BasicCommonSpellApplyMuted"
       ],
       "pools": ["MegaPool"],
-      "traits": ["@Randomized", "@SpellModifier3", "@Consume"],
-      "lore_tooltips": [
-        {
-          "english": "Example common card.",
-          "chinese": "示例剧情文本。"
-        }
-      ]
+      "traits": ["@Randomized", "@SpellModifier3", "@Consume"]
     }
   ],
   "effects": [

@@ -80,5 +80,14 @@ namespace Random_Clan.Plugin.Extensions
 
         public static void SetIsUnitAbility(this CardData card, bool value)
             => AccessTools.Field(typeof(CardData), "isUnitAbility")?.SetValue(card, value);
+
+        /// <summary>Steal donor card art prefab ref (shared asset; later glitch shaders can wrap this).</summary>
+        public static void CopyCardArtFrom(this CardData slot, CardData donor)
+        {
+            var field = AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef");
+            var art = field?.GetValue(donor);
+            if (art != null)
+                field!.SetValue(slot, art);
+        }
     }
 }

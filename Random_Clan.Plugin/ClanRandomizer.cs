@@ -77,14 +77,8 @@ namespace Random_Clan.Plugin
             var donors = BuildDonorPools(all);
             var upgradePool = BuildChampionUpgradePool(all);
 
-            var ctx = new RandomizeContext
+            var ctx = new RandomizeContext(saveManager, _cards, _traits, _classes, _upgrades, _client)
             {
-                SaveManager = saveManager,
-                Cards = _cards,
-                Traits = _traits,
-                Classes = _classes,
-                Upgrades = _upgrades,
-                Client = _client,
                 ChampionUpgradePool = upgradePool,
             };
 

@@ -32,13 +32,14 @@ namespace Random_Clan.Plugin.Copying
             if (rarity != null)
                 slot.SetRarityObject(rarity);
             slot.SetCost(donor.GetCostValue());
+            slot.CopyCardArtFrom(donor);
 
             var donorEffects = donor.GetEffects() ?? [];
             var effectClones = new List<CardEffectData>(donorEffects.Count);
             foreach (var effect in donorEffects)
             {
                 if (effect != null)
-                    effectClones.Add(CloneEffect(effect));
+                    effectClones.Add(DataCloner.CloneEffect(effect));
             }
             slot.SetEffects(effectClones);
 
@@ -54,7 +55,7 @@ namespace Random_Clan.Plugin.Copying
             foreach (var trigger in donor.GetTriggerList())
             {
                 if (trigger != null)
-                    triggerClones.Add(UnityEngine.Object.Instantiate(trigger));
+                    triggerClones.Add(DataCloner.CloneCardTrigger(trigger));
             }
             slot.SetTriggers(triggerClones);
         }
@@ -69,6 +70,7 @@ namespace Random_Clan.Plugin.Copying
             if (rarity != null)
                 slot.SetRarityObject(rarity);
             slot.SetCost(donor.GetCostValue());
+            slot.CopyCardArtFrom(donor);
 
             var slotChar = slot.GetSpawnCharacterData();
             var donorChar = donor.GetSpawnCharacterData();
@@ -92,7 +94,7 @@ namespace Random_Clan.Plugin.Copying
             foreach (var trigger in donor.GetTriggerList())
             {
                 if (trigger != null)
-                    triggerClones.Add(CloneCharacterTrigger(trigger));
+                    triggerClones.Add(DataCloner.CloneCharacterTrigger(trigger));
             }
             slot.SetTriggers(triggerClones);
             slot.CopyStartingStatusesFrom(donor);
@@ -127,45 +129,6 @@ namespace Random_Clan.Plugin.Copying
                 if (value != null)
                     field!.SetValue(slot, value);
             }
-        }
-
-        public static CardEffectData CloneEffect(CardEffectData source)
-        {
-            var clone = UnityEngine.Object.Instantiate(source);
-            var statuses = source.GetStatusEffects();
-            if (statuses != null)
-            {
-                var statusCopy = new StatusEffectStackData[statuses.Length];
-                for (var i = 0; i < statuses.Length; i++)
-                {
-                    var s = statuses[i];
-                    statusCopy[i] = new StatusEffectStackData
-                    {
-                        statusId = s.statusId,
-                        count = s.count,
-                        fromPermanentUpgrade = s.fromPermanentUpgrade
-                    };
-                }
-                clone.SetStatusEffects(statusCopy);
-            }
-            return clone;
-        }
-
-        private static CharacterTriggerData CloneCharacterTrigger(CharacterTriggerData source)
-        {
-            var clone = UnityEngine.Object.Instantiate(source);
-            var effects = AccessTools.Field(typeof(CharacterTriggerData), "effects")?.GetValue(source) as List<CardEffectData>;
-            if (effects != null)
-            {
-                var clones = new List<CardEffectData>(effects.Count);
-                foreach (var effect in effects)
-                {
-                    if (effect != null)
-                        clones.Add(CloneEffect(effect));
-                }
-                AccessTools.Field(typeof(CharacterTriggerData), "effects")?.SetValue(clone, clones);
-            }
-            return clone;
         }
     }
 }

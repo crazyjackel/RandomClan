@@ -36,11 +36,11 @@ namespace Random_Clan.Plugin.Snapshots
 
         public static CardSnapshot Capture(CardData card)
         {
-            var effects = (card.GetEffects() ?? []).Select(CardDonorCopier.CloneEffect).ToList();
+            var effects = (card.GetEffects() ?? []).Select(DataCloner.CloneEffect).ToList();
             var traits = card.GetTraitList().Where(t => t != null).ToList();
             var triggers = card.GetTriggerList()
                 .Where(t => t != null)
-                .Select(t => UnityEngine.Object.Instantiate(t))
+                .Select(DataCloner.CloneCardTrigger)
                 .ToList();
 
             CharacterSnapshot? character = null;
@@ -69,9 +69,9 @@ namespace Random_Clan.Plugin.Snapshots
             if (_rarity != null)
                 card.SetRarityObject(_rarity);
 
-            card.SetEffects(_effects.Select(CardDonorCopier.CloneEffect).ToList());
+            card.SetEffects(_effects.Select(DataCloner.CloneEffect).ToList());
             card.SetTraits(new List<CardTraitData>(_traits));
-            card.SetTriggers(_triggers.Select(t => UnityEngine.Object.Instantiate(t)).ToList());
+            card.SetTriggers(_triggers.Select(DataCloner.CloneCardTrigger).ToList());
 
             var spawn = card.GetSpawnCharacterData();
             if (spawn != null && _character != null)
@@ -108,7 +108,7 @@ namespace Random_Clan.Plugin.Snapshots
         {
             var triggers = character.GetTriggerList()
                 .Where(t => t != null)
-                .Select(t => UnityEngine.Object.Instantiate(t))
+                .Select(DataCloner.CloneCharacterTrigger)
                 .ToList();
 
             CardSnapshot? ability = null;
@@ -131,7 +131,7 @@ namespace Random_Clan.Plugin.Snapshots
             character.SetAttackDamage(_attack);
             character.SetSize(_size);
             character.SetSubtypeKeys(new List<string>(_subtypes));
-            character.SetTriggers(_triggers.Select(t => UnityEngine.Object.Instantiate(t)).ToList());
+            character.SetTriggers(_triggers.Select(DataCloner.CloneCharacterTrigger).ToList());
 
             var abilityCard = character.GetUnitAbilityCardData();
             if (abilityCard != null && _ability != null)

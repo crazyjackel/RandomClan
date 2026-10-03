@@ -1,4 +1,5 @@
 using HarmonyLib;
+using Random_Clan.Plugin.Copying;
 using Random_Clan.Plugin.Extensions;
 
 namespace Random_Clan.Plugin.Modifications.Rooms
@@ -46,7 +47,7 @@ namespace Random_Clan.Plugin.Modifications.Rooms
                 {
                     if (mod == null)
                         continue;
-                    var modClone = UnityEngine.Object.Instantiate(mod);
+                    var modClone = DataCloner.CloneRoomModifier(mod);
                     var paramInt = (int)(AccessTools.Field(typeof(RoomModifierData), "paramInt")?.GetValue(modClone) ?? 0);
                     if (paramInt != 0)
                         AccessTools.Field(typeof(RoomModifierData), "paramInt")?.SetValue(modClone, Math.Abs(paramInt).MutateBalanced(rng) * Math.Sign(paramInt));

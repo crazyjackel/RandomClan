@@ -3,7 +3,7 @@
   "traits": [
     {
       "id": "Randomized",
-      "name": "CardTraitRandomized",
+      "name": "@CardTraitRandomized",
       "param_description": {
         "english": "At the start of the run, this card's data is copied from an existing card without Randomized."
       },
@@ -12,7 +12,7 @@
     },
     {
       "id": "SpellModifier1",
-      "name": "CardTraitSpellModifier",
+      "name": "@CardTraitSpellModifier",
       "param_int": 1,
       "param_description": {
         "english": "After randomization, this spell receives 1 modification."
@@ -22,7 +22,7 @@
     },
     {
       "id": "SpellModifier2",
-      "name": "CardTraitSpellModifier",
+      "name": "@CardTraitSpellModifier",
       "param_int": 2,
       "param_description": {
         "english": "After randomization, this spell receives 2 modifications."
@@ -32,7 +32,7 @@
     },
     {
       "id": "SpellModifier3",
-      "name": "CardTraitSpellModifier",
+      "name": "@CardTraitSpellModifier",
       "param_int": 3,
       "param_description": {
         "english": "After randomization, this spell receives 3 modifications."
@@ -42,7 +42,7 @@
     },
     {
       "id": "UnitModifier1",
-      "name": "CardTraitUnitModifier",
+      "name": "@CardTraitUnitModifier",
       "param_int": 1,
       "param_description": {
         "english": "After randomization, this unit receives 1 modification."
@@ -52,7 +52,7 @@
     },
     {
       "id": "UnitModifier2",
-      "name": "CardTraitUnitModifier",
+      "name": "@CardTraitUnitModifier",
       "param_int": 2,
       "param_description": {
         "english": "After randomization, this unit receives 2 modifications."
@@ -62,7 +62,7 @@
     },
     {
       "id": "UnitModifier3",
-      "name": "CardTraitUnitModifier",
+      "name": "@CardTraitUnitModifier",
       "param_int": 3,
       "param_description": {
         "english": "After randomization, this unit receives 3 modifications."
@@ -72,7 +72,7 @@
     },
     {
       "id": "RoomModifier1",
-      "name": "CardTraitRoomModifier",
+      "name": "@CardTraitRoomModifier",
       "param_int": 1,
       "param_description": {
         "english": "After randomization, this room receives 1 modification."
@@ -82,7 +82,7 @@
     },
     {
       "id": "RoomModifier2",
-      "name": "CardTraitRoomModifier",
+      "name": "@CardTraitRoomModifier",
       "param_int": 2,
       "param_description": {
         "english": "After randomization, this room receives 2 modifications."
@@ -92,7 +92,7 @@
     },
     {
       "id": "ChampionModifier2",
-      "name": "CardTraitChampionModifier",
+      "name": "@CardTraitChampionModifier",
       "param_int": 2,
       "param_description": {
         "english": "After randomization, this champion receives 2 modifications."
@@ -102,7 +102,7 @@
     },
     {
       "id": "ChampionModifier3",
-      "name": "CardTraitChampionModifier",
+      "name": "@CardTraitChampionModifier",
       "param_int": 3,
       "param_description": {
         "english": "After randomization, this champion receives 3 modifications."

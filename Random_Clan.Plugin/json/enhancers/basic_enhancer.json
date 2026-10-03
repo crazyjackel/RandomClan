@@ -5,8 +5,8 @@
       "id": "Basicstone",
       "type": "enhancer",
       "names": {
-        "english": "Basicstone",
-        "chinese": "示例石"
+        "english": "Fluky Stone",
+        "chinese": "侥幸石"
       },
       "descriptions": {
         "english": "Upgrade a unit with +[effect0.upgrade.bonusdamage][attack] +[effect0.upgrade.bonushp][health] and [effect0.upgrade.bonussize][capacity].",

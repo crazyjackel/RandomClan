@@ -38,8 +38,7 @@ namespace Random_Clan.Plugin
                         "json/units/basic_draft_unit.json",
                         "json/equipment/basic_equipment.json",
                         "json/rooms/basic_room.json",
-                        "json/enhancers/basic_enhancer.json",
-                        "json/relics/basic_artifact.json"
+                        "json/enhancers/basic_enhancer.json"
                     );
                 }
             );
