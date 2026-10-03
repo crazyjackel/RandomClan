@@ -4,19 +4,19 @@
     {
       "id": "ClassBasic",
       "titles": {
-        "english": "Basic",
-        "chinese": "示例"
+        "english": "Random",
+        "chinese": "随机"
       },
       "descriptions": {
-        "english": "A basic minimal clan example as primary.",
-        "chinese": "示例氏族介绍。"
+        "english": "A clan remade from other clans each run.",
+        "chinese": "每局从其他氏族随机重铸。"
       },
       "subclass_descriptions": {
-        "english": "A basic minimal clan example as secondary.",
-        "chinese": "示例氏族介绍。"
+        "english": "A clan remade from other clans each run.",
+        "chinese": "每局从其他氏族随机重铸。"
       },
       "event_titles": {
-        "english": "<wonderous>Basic citizen</wonderous>"
+        "english": "<wonderous>Random citizen</wonderous>"
       },
       "icons": {
         "small": "@BasicClanSmallIcon",

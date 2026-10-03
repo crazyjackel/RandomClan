@@ -4,19 +4,19 @@ overview: "Feasibility and recommended architecture for a per-run seeded Random 
 todos:
   - id: spike-seed-hook
     content: Spike run-start Harmony hook + seeded RNG + donor pool enumeration (spells/units/champions/rooms)
-    status: pending
+    status: completed
   - id: spell-copy-mods
     content: Implement safe spell copy onto placeholders + Status/Trait/Number/Cost mutators with wording constraints
-    status: pending
+    status: completed
   - id: unit-copy-mods
     content: Implement unit+character(+ability) copy + Health/Attack/Status/StatusCount/Cost mutators with validation
-    status: pending
+    status: completed
   - id: champion-upgrade-pool
     content: Build global champion upgrade pool; rebuild Random Clan champion trees with fallback on invalid upgrades
-    status: pending
+    status: completed
   - id: rooms-copy
     content: Copy room donors onto placeholders with wording-safe numeric/status tweaks only
-    status: pending
+    status: completed
   - id: repro-safety-pass
     content: Verify same-seed reproducibility, menu restore, and no vanilla ScriptableObject corruption
     status: pending

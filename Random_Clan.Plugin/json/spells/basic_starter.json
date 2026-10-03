@@ -19,6 +19,7 @@
       "class": "@ClassBasic",
       "card_art": "@ChampionAStarterCardArt",
       "effects": [ "@ChampionAStarterDealTwentyDamage" ],
+      "traits": [ "@Randomized", "@SpellModifier2" ],
       "pools": [ "StarterCardsOnly" ],
       "lore_tooltips": [
         {

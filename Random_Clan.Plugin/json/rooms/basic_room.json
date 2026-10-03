@@ -19,6 +19,7 @@
       "class": "@ClassBasic",
       "card_art": "@BasicRoomCardArt",
       "effects": [ "@BasicRoomAttach" ],
+      "traits": [ "@Randomized", "@RoomModifier2" ],
       "pools": [
         "MegaPool",
         "RoomAndEquipmentMerchant_RoomPool",

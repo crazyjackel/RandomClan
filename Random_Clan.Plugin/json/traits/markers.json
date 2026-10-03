@@ -1,0 +1,114 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "traits": [
+    {
+      "id": "Randomized",
+      "name": "CardTraitRandomized",
+      "param_description": {
+        "english": "At the start of the run, this card's data is copied from an existing card without Randomized."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "SpellModifier1",
+      "name": "CardTraitSpellModifier",
+      "param_int": 1,
+      "param_description": {
+        "english": "After randomization, this spell receives 1 modification."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "SpellModifier2",
+      "name": "CardTraitSpellModifier",
+      "param_int": 2,
+      "param_description": {
+        "english": "After randomization, this spell receives 2 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "SpellModifier3",
+      "name": "CardTraitSpellModifier",
+      "param_int": 3,
+      "param_description": {
+        "english": "After randomization, this spell receives 3 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "UnitModifier1",
+      "name": "CardTraitUnitModifier",
+      "param_int": 1,
+      "param_description": {
+        "english": "After randomization, this unit receives 1 modification."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "UnitModifier2",
+      "name": "CardTraitUnitModifier",
+      "param_int": 2,
+      "param_description": {
+        "english": "After randomization, this unit receives 2 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "UnitModifier3",
+      "name": "CardTraitUnitModifier",
+      "param_int": 3,
+      "param_description": {
+        "english": "After randomization, this unit receives 3 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "RoomModifier1",
+      "name": "CardTraitRoomModifier",
+      "param_int": 1,
+      "param_description": {
+        "english": "After randomization, this room receives 1 modification."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "RoomModifier2",
+      "name": "CardTraitRoomModifier",
+      "param_int": 2,
+      "param_description": {
+        "english": "After randomization, this room receives 2 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "ChampionModifier2",
+      "name": "CardTraitChampionModifier",
+      "param_int": 2,
+      "param_description": {
+        "english": "After randomization, this champion receives 2 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "ChampionModifier3",
+      "name": "CardTraitChampionModifier",
+      "param_int": 3,
+      "param_description": {
+        "english": "After randomization, this champion receives 3 modifications."
+      },
+      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    }
+  ]
+}

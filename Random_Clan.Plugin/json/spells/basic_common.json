@@ -23,7 +23,7 @@
         "@BasicCommonSpellApplyMuted"
       ],
       "pools": ["MegaPool"],
-      "traits": ["@Consume"],
+      "traits": ["@Randomized", "@SpellModifier3", "@Consume"],
       "lore_tooltips": [
         {
           "english": "Example common card.",
