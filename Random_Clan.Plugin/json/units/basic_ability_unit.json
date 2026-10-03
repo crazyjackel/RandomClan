@@ -14,9 +14,17 @@
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
-      "pools": [ "UnitsAllBanner", "@UnitsBasicClanBanner" ],
-      "effects": [ "@SpawnBasicAbilityUnit" ],
-      "traits": [ "@Randomized", "@UnitModifier3" ]
+      "pools": [
+        "UnitsAllBanner",
+        "@UnitsBasicClanBanner"
+      ],
+      "effects": [
+        "@SpawnBasicAbilityUnit"
+      ],
+      "traits": [
+        "@Randomized",
+        "@UnitModifier3"
+      ]
     }
   ],
   "characters": [
@@ -29,7 +37,10 @@
       "character_art": "@BasicAbilityUnitCharacterArt",
       "health": 7,
       "attack_damage": 7,
-      "subtypes": [ "SubtypesData_BannerUnit", "@BasicSubtype" ]
+      "subtypes": [
+        "SubtypesData_BannerUnit",
+        "@BasicSubtype"
+      ]
     }
   ],
   "effects": [
@@ -41,6 +52,24 @@
     }
   ],
   "game_objects": [
+    {
+      "id": "BasicAbilityUnitCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@BasicAbilityUnitCardSprite"
+        }
+      }
+    },
+    {
+      "id": "BasicAbilityUnitCharacterArt",
+      "type": "character_art",
+      "extensions": {
+        "character_art": {
+          "sprite": "@BasicAbilityUnitCharacterSprite"
+        }
+      }
+    },
     {
       "id": "BasicAbilityUnitCardArt",
       "type": "card_art",

@@ -2,12 +2,12 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "RoamingShade",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Roaming Shade",
+        "chinese": "游荡阴影"
       },
-      "card_art": "@BasicBannerUnitCardArt",
+      "card_art": "@RoamingShadeCardArt",
       "cost": 2,
       "card_type": "monster",
       "rarity": "uncommon",
@@ -19,7 +19,7 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnRoamingShade"
       ],
       "traits": [
         "@Randomized",
@@ -29,12 +29,12 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "RoamingShadeCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Roaming Shade",
+        "chinese": "游荡阴影"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@RoamingShadeCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,57 +45,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnRoamingShade",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@RoamingShadeCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "RoamingShadeCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@RoamingShadeCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "RoamingShadeCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@RoamingShadeCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "RoamingShadeCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@RoamingShadeCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "RoamingShadeCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@RoamingShadeCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
+      "id": "RoamingShadeCardSprite",
       "path": "textures/card_art/BasicBannerUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
+      "id": "RoamingShadeCharacterSprite",
       "path": "textures/character_art/BasicBannerUnit.png"
     }
   ]

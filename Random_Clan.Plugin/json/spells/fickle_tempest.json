@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "FickleTempest",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Fickle Tempest",
+        "chinese": "善变风暴"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@FickleTempestCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "FickleTempestCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@FickleTempestCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "FickleTempestCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

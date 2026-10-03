@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "ScattershotCurse",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Scattershot Curse",
+        "chinese": "散弹诅咒"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@ScattershotCurseCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier1"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "ScattershotCurseCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@ScattershotCurseCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "ScattershotCurseCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

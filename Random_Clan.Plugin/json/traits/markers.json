@@ -1,113 +1,182 @@
 {
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "localization_terms": [
+    {
+      "key": "CardTraitRandomized_CardText",
+      "texts": {
+        "english": "Randomized",
+        "chinese": "随机"
+      }
+    },
+    {
+      "key": "CardTraitRandomized_TooltipTitle",
+      "texts": {
+        "english": "Randomized",
+        "chinese": "随机"
+      }
+    },
+    {
+      "key": "CardTraitRandomized_TooltipText",
+      "texts": {
+        "english": "At the start of the run, this card's data is copied from an existing card without Randomized.",
+        "chinese": "在每局开始时，此卡的数据会从未带 Randomized 的现有卡牌中复制。"
+      }
+    },
+    {
+      "key": "CardTraitSpellModifier_CardText",
+      "texts": {
+        "english": "Spell Chaos {0}",
+        "chinese": "法术混沌 {0}"
+      }
+    },
+    {
+      "key": "CardTraitSpellModifier_TooltipTitle",
+      "texts": {
+        "english": "Spell Chaos",
+        "chinese": "法术混沌"
+      }
+    },
+    {
+      "key": "CardTraitSpellModifier_TooltipText",
+      "texts": {
+        "english": "After randomization, this spell receives {0} modification(s).",
+        "chinese": "随机化后，此法术会获得 {0} 次修改。"
+      }
+    },
+    {
+      "key": "CardTraitUnitModifier_CardText",
+      "texts": {
+        "english": "Unit Chaos {0}",
+        "chinese": "单位混沌 {0}"
+      }
+    },
+    {
+      "key": "CardTraitUnitModifier_TooltipTitle",
+      "texts": {
+        "english": "Unit Chaos",
+        "chinese": "单位混沌"
+      }
+    },
+    {
+      "key": "CardTraitUnitModifier_TooltipText",
+      "texts": {
+        "english": "After randomization, this unit receives {0} modification(s).",
+        "chinese": "随机化后，此单位会获得 {0} 次修改。"
+      }
+    },
+    {
+      "key": "CardTraitRoomModifier_CardText",
+      "texts": {
+        "english": "Room Chaos {0}",
+        "chinese": "房间混沌 {0}"
+      }
+    },
+    {
+      "key": "CardTraitRoomModifier_TooltipTitle",
+      "texts": {
+        "english": "Room Chaos",
+        "chinese": "房间混沌"
+      }
+    },
+    {
+      "key": "CardTraitRoomModifier_TooltipText",
+      "texts": {
+        "english": "After randomization, this room receives {0} modification(s).",
+        "chinese": "随机化后，此房间会获得 {0} 次修改。"
+      }
+    },
+    {
+      "key": "CardTraitChampionModifier_CardText",
+      "texts": {
+        "english": "Champion Chaos {0}",
+        "chinese": "勇士混沌 {0}"
+      }
+    },
+    {
+      "key": "CardTraitChampionModifier_TooltipTitle",
+      "texts": {
+        "english": "Champion Chaos",
+        "chinese": "勇士混沌"
+      }
+    },
+    {
+      "key": "CardTraitChampionModifier_TooltipText",
+      "texts": {
+        "english": "After randomization, this champion receives {0} modification(s).",
+        "chinese": "随机化后，此勇士会获得 {0} 次修改。"
+      }
+    }
+  ],
   "traits": [
     {
       "id": "Randomized",
       "name": "@CardTraitRandomized",
-      "param_description": {
-        "english": "At the start of the run, this card's data is copied from an existing card without Randomized."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "SpellModifier1",
       "name": "@CardTraitSpellModifier",
       "param_int": 1,
-      "param_description": {
-        "english": "After randomization, this spell receives 1 modification."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "SpellModifier2",
       "name": "@CardTraitSpellModifier",
       "param_int": 2,
-      "param_description": {
-        "english": "After randomization, this spell receives 2 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "SpellModifier3",
       "name": "@CardTraitSpellModifier",
       "param_int": 3,
-      "param_description": {
-        "english": "After randomization, this spell receives 3 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "UnitModifier1",
       "name": "@CardTraitUnitModifier",
       "param_int": 1,
-      "param_description": {
-        "english": "After randomization, this unit receives 1 modification."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "UnitModifier2",
       "name": "@CardTraitUnitModifier",
       "param_int": 2,
-      "param_description": {
-        "english": "After randomization, this unit receives 2 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "UnitModifier3",
       "name": "@CardTraitUnitModifier",
       "param_int": 3,
-      "param_description": {
-        "english": "After randomization, this unit receives 3 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "RoomModifier1",
       "name": "@CardTraitRoomModifier",
       "param_int": 1,
-      "param_description": {
-        "english": "After randomization, this room receives 1 modification."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "RoomModifier2",
       "name": "@CardTraitRoomModifier",
       "param_int": 2,
-      "param_description": {
-        "english": "After randomization, this room receives 2 modifications."
-      },
-      "effect_text_suppressed": true,
+      "trait_is_removable": false
+    },
+    {
+      "id": "RoomModifier3",
+      "name": "@CardTraitRoomModifier",
+      "param_int": 3,
       "trait_is_removable": false
     },
     {
       "id": "ChampionModifier2",
       "name": "@CardTraitChampionModifier",
       "param_int": 2,
-      "param_description": {
-        "english": "After randomization, this champion receives 2 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     },
     {
       "id": "ChampionModifier3",
       "name": "@CardTraitChampionModifier",
       "param_int": 3,
-      "param_description": {
-        "english": "After randomization, this champion receives 3 modifications."
-      },
-      "effect_text_suppressed": true,
       "trait_is_removable": false
     }
   ]

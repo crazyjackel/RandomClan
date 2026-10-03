@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "CapriciousFlare",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Capricious Flare",
+        "chinese": "任性光焰"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@CapriciousFlareCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier1"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "CapriciousFlareCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@CapriciousFlareCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "CapriciousFlareCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

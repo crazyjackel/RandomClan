@@ -13,35 +13,30 @@
       "targets_room": true,
       "targetless": false,
       "class": "@ClassBasic",
-      "card_art": "@ChampionAStarterCardArt",
-      "effects": [ "@ChampionAStarterDealTwentyDamage" ],
-      "traits": [ "@Randomized", "@SpellModifier2" ],
-      "pools": [ "StarterCardsOnly" ]
-    }
-  ],
-  "effects": [
-    {
-      "id": "ChampionAStarterDealTwentyDamage",
-      "name": "CardEffectDamage",
-      "target_mode": "drop_target_character",
-      "target_team": "heroes",
-      "param_int": 20
+      "card_art": "@ChampionAStarterCardCardArt",
+      "pools": [
+        "StarterCardsOnly"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
     }
   ],
   "game_objects": [
     {
-      "id": "ChampionAStarterCardArt",
+      "id": "ChampionAStarterCardCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@ChampionAStarterCardSprite"
+          "sprite": "@ChampionAStarterCardCardSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "ChampionAStarterCardSprite",
+      "id": "ChampionAStarterCardCardSprite",
       "path": "textures/card_art/ChampionAStarter.png"
     }
   ]

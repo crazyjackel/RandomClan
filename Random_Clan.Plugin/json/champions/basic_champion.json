@@ -22,7 +22,8 @@
     {
       "id": "ChampionACharacter",
       "names": {
-        "english": "Slapdash Cretin"
+        "english": "Randomonious the Randomizer",
+        "chinese": "随机大帝"
       },
       "character_art": "@ChampionACharacterArt",
       "size": 3,
@@ -35,7 +36,8 @@
     {
       "id": "ChampionAUpgradePathI",
       "titles": {
-        "english": "Unplanned Growth"
+        "english": "Unplanned Growth",
+        "chinese": "无计划生长"
       },
       "bonus_damage": 30,
       "bonus_hp": 30
@@ -43,7 +45,8 @@
     {
       "id": "ChampionAUpgradePathII",
       "titles": {
-        "english": "Fortuitous Surge"
+        "english": "Fortuitous Surge",
+        "chinese": "偶然爆发"
       },
       "bonus_damage": 90,
       "bonus_hp": 60
@@ -51,18 +54,11 @@
     {
       "id": "ChampionAUpgradePathIII",
       "titles": {
-        "english": "Arbitrary Apotheosis"
+        "english": "Arbitrary Apotheosis",
+        "chinese": "任意升华"
       },
-      "trigger_upgrades": [ "@ChampionATriggerIII" ],
       "bonus_damage": 270,
       "bonus_hp": 120
-    }
-  ],
-  "character_triggers": [
-    {
-      "id": "ChampionATriggerIII",
-      "trigger": "post_combat",
-      "effects": [ "@ChampionAGain5Rage" ]
     }
   ],
   "effects": [
@@ -71,17 +67,6 @@
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
       "param_character": "@ChampionACharacter"
-    },
-    {
-      "id": "ChampionAGain5Rage",
-      "name": "CardEffectAddStatusEffect",
-      "target_mode": "self",
-      "param_status_effects": [
-        {
-          "status": "buff",
-          "count": 5
-        }
-      ]
     }
   ],
   "game_objects": [

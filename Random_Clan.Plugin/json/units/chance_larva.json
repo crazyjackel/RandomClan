@@ -2,24 +2,23 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "ChanceLarva",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Chance Larva",
+        "chinese": "机运幼体"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@ChanceLarvaCardArt",
+      "cost": 1,
       "card_type": "monster",
       "rarity": "uncommon",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
       "pools": [
-        "UnitsAllBanner",
-        "@UnitsBasicClanBanner"
+        "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnChanceLarva"
       ],
       "traits": [
         "@Randomized",
@@ -29,74 +28,73 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "ChanceLarvaCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Chance Larva",
+        "chinese": "机运幼体"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@ChanceLarvaCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
-        "SubtypesData_BannerUnit",
         "@BasicSubtype"
       ]
     }
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnChanceLarva",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@ChanceLarvaCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ChanceLarvaCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ChanceLarvaCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ChanceLarvaCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ChanceLarvaCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ChanceLarvaCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ChanceLarvaCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ChanceLarvaCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ChanceLarvaCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "ChanceLarvaCardSprite",
+      "path": "textures/card_art/BasicDraftUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "ChanceLarvaCharacterSprite",
+      "path": "textures/character_art/BasicDraftUnit.png"
     }
   ]
 }

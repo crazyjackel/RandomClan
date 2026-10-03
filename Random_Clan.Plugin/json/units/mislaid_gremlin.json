@@ -2,12 +2,12 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "MislaidGremlin",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Mislaid Gremlin",
+        "chinese": "错置格林姆"
       },
-      "card_art": "@BasicBannerUnitCardArt",
+      "card_art": "@MislaidGremlinCardArt",
       "cost": 2,
       "card_type": "monster",
       "rarity": "uncommon",
@@ -15,88 +15,86 @@
       "targets_room": true,
       "targetless": false,
       "pools": [
-        "UnitsAllBanner",
-        "@UnitsBasicClanBanner"
+        "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnMislaidGremlin"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier1"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "MislaidGremlinCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Mislaid Gremlin",
+        "chinese": "错置格林姆"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@MislaidGremlinCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
-        "SubtypesData_BannerUnit",
         "@BasicSubtype"
       ]
     }
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnMislaidGremlin",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@MislaidGremlinCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "MislaidGremlinCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@MislaidGremlinCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "MislaidGremlinCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@MislaidGremlinCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "MislaidGremlinCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@MislaidGremlinCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "MislaidGremlinCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@MislaidGremlinCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "MislaidGremlinCardSprite",
+      "path": "textures/card_art/BasicDraftUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "MislaidGremlinCharacterSprite",
+      "path": "textures/character_art/BasicDraftUnit.png"
     }
   ]
 }

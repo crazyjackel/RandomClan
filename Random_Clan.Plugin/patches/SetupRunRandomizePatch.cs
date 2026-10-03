@@ -1,5 +1,4 @@
 using HarmonyLib;
-using TrainworksReloaded.Core;
 
 namespace Random_Clan.Plugin.Patches
 {
@@ -10,7 +9,14 @@ namespace Random_Clan.Plugin.Patches
         {
             try
             {
-                Railend.GetContainer().GetInstance<ClanRandomizer>().Randomize(__instance);
+                var randomizer = Plugin.ClanRandomizer;
+                if (randomizer == null)
+                {
+                    Plugin.Logger.LogError("ClanRandomizer was not resolved; skipping SetupRun randomize.");
+                    return;
+                }
+
+                randomizer.Randomize(__instance);
             }
             catch (Exception ex)
             {

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "RouletteLance",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Roulette Lance",
+        "chinese": "轮盘枪"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@RouletteLanceCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "RouletteLanceCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@RouletteLanceCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "RouletteLanceCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

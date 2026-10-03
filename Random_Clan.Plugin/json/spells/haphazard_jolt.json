@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "HaphazardJolt",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Haphazard Jolt",
+        "chinese": "草率震击"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@HaphazardJoltCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "HaphazardJoltCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@HaphazardJoltCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "HaphazardJoltCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "ChaosCataclysm",
+      "cost": 3,
+      "card_type": "spell",
+      "names": {
+        "english": "Chaos Cataclysm",
+        "chinese": "混沌灾变"
+      },
+      "rarity": "rare",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@ChaosCataclysmCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier3"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "ChaosCataclysmCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@ChaosCataclysmCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "ChaosCataclysmCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "FortuitousRuin",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Fortuitous Ruin",
+        "chinese": "侥幸毁灭"
+      },
+      "rarity": "rare",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@FortuitousRuinCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier3"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "FortuitousRuinCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@FortuitousRuinCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "FortuitousRuinCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

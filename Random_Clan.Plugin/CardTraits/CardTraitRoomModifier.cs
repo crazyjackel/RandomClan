@@ -1,8 +1,7 @@
 namespace Random_Clan.Plugin.CardTraits
 {
-    /// <summary>Marker only: after copy, apply param_int room modifications.</summary>
-    public sealed class CardTraitRoomModifier : CardTraitState
+    public sealed class CardTraitRoomModifier : CardTraitModifierBase
     {
-        public override PropDescriptions CreateEditorInspectorDescriptions() => new();
+        protected override string LocalizationPrefix => nameof(CardTraitRoomModifier);
     }
 }

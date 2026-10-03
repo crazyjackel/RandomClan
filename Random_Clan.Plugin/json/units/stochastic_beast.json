@@ -2,24 +2,23 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "StochasticBeast",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Stochastic Beast",
+        "chinese": "随机野兽"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@StochasticBeastCardArt",
+      "cost": 3,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "rare",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
       "pools": [
-        "UnitsAllBanner",
-        "@UnitsBasicClanBanner"
+        "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnStochasticBeast"
       ],
       "traits": [
         "@Randomized",
@@ -29,74 +28,73 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "StochasticBeastCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Stochastic Beast",
+        "chinese": "随机野兽"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@StochasticBeastCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
-        "SubtypesData_BannerUnit",
         "@BasicSubtype"
       ]
     }
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnStochasticBeast",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@StochasticBeastCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "StochasticBeastCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@StochasticBeastCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "StochasticBeastCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@StochasticBeastCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "StochasticBeastCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@StochasticBeastCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "StochasticBeastCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@StochasticBeastCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "StochasticBeastCardSprite",
+      "path": "textures/card_art/BasicAbilityUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "StochasticBeastCharacterSprite",
+      "path": "textures/character_art/BasicAbilityUnit.png"
     }
   ]
 }

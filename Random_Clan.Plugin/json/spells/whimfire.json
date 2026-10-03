@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "Whimfire",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Whimfire",
+        "chinese": "心血来火"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@WhimfireCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "WhimfireCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@WhimfireCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "WhimfireCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "Dicebolt",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Dicebolt",
+        "chinese": "骰矢"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@DiceboltCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier1"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "DiceboltCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@DiceboltCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "DiceboltCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

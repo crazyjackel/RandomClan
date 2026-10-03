@@ -2,15 +2,15 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "IndeterminateFiend",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Indeterminate Fiend",
+        "chinese": "不定魔煞"
       },
-      "card_art": "@BasicBannerUnitCardArt",
+      "card_art": "@IndeterminateFiendCardArt",
       "cost": 2,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "rare",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
@@ -19,7 +19,7 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnIndeterminateFiend"
       ],
       "traits": [
         "@Randomized",
@@ -29,12 +29,12 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "IndeterminateFiendCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Indeterminate Fiend",
+        "chinese": "不定魔煞"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@IndeterminateFiendCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,58 +45,58 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnIndeterminateFiend",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@IndeterminateFiendCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "IndeterminateFiendCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@IndeterminateFiendCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "IndeterminateFiendCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@IndeterminateFiendCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "IndeterminateFiendCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@IndeterminateFiendCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "IndeterminateFiendCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@IndeterminateFiendCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "IndeterminateFiendCardSprite",
+      "path": "textures/card_art/BasicAbilityUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "IndeterminateFiendCharacterSprite",
+      "path": "textures/character_art/BasicAbilityUnit.png"
     }
   ]
 }

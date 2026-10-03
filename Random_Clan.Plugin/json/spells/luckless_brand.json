@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "LucklessBrand",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Luckless Brand",
+        "chinese": "厄运烙印"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@LucklessBrandCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier1"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "LucklessBrandCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@LucklessBrandCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "LucklessBrandCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

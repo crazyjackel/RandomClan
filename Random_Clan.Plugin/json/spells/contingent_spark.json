@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "ContingentSpark",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Contingent Spark",
+        "chinese": "权变火花"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@ContingentSparkCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "ContingentSparkCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@ContingentSparkCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "ContingentSparkCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

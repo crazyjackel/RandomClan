@@ -2,13 +2,13 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "ErrantGoblin",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Errant Goblin",
+        "chinese": "迷途哥布林"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@ErrantGoblinCardArt",
+      "cost": 1,
       "card_type": "monster",
       "rarity": "uncommon",
       "class": "@ClassBasic",
@@ -19,22 +19,22 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnErrantGoblin"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier1"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "ErrantGoblinCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Errant Goblin",
+        "chinese": "迷途哥布林"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@ErrantGoblinCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,57 +45,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnErrantGoblin",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@ErrantGoblinCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ErrantGoblinCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ErrantGoblinCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ErrantGoblinCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ErrantGoblinCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ErrantGoblinCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ErrantGoblinCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ErrantGoblinCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ErrantGoblinCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
+      "id": "ErrantGoblinCardSprite",
       "path": "textures/card_art/BasicBannerUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
+      "id": "ErrantGoblinCharacterSprite",
       "path": "textures/character_art/BasicBannerUnit.png"
     }
   ]

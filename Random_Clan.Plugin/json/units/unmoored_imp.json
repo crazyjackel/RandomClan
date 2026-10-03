@@ -2,13 +2,13 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "UnmooredImp",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Unmoored Imp",
+        "chinese": "无锚小恶魔"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@UnmooredImpCardArt",
+      "cost": 1,
       "card_type": "monster",
       "rarity": "uncommon",
       "class": "@ClassBasic",
@@ -19,7 +19,7 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnUnmooredImp"
       ],
       "traits": [
         "@Randomized",
@@ -29,12 +29,12 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "UnmooredImpCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Unmoored Imp",
+        "chinese": "无锚小恶魔"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@UnmooredImpCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,57 +45,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnUnmooredImp",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@UnmooredImpCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "UnmooredImpCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@UnmooredImpCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "UnmooredImpCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@UnmooredImpCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "UnmooredImpCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@UnmooredImpCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "UnmooredImpCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@UnmooredImpCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
+      "id": "UnmooredImpCardSprite",
       "path": "textures/card_art/BasicBannerUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
+      "id": "UnmooredImpCharacterSprite",
       "path": "textures/character_art/BasicBannerUnit.png"
     }
   ]

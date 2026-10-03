@@ -1,0 +1,202 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "BasicRoomCard",
+      "cost": 2,
+      "card_type": "room",
+      "names": {
+        "english": "Contingent Bastion",
+        "chinese": "偶然堡垒"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": true,
+      "class": "@ClassBasic",
+      "card_art": "@BasicRoomCardCardArt",
+      "effects": [
+        "@BasicRoomCardAttach"
+      ],
+      "traits": [
+        "@Randomized",
+        "@RoomModifier2"
+      ],
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ]
+    },
+    {
+      "id": "HappenstanceKeep",
+      "cost": 2,
+      "card_type": "room",
+      "names": {
+        "english": "Happenstance Keep",
+        "chinese": "巧合要塞"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": true,
+      "class": "@ClassBasic",
+      "card_art": "@HappenstanceKeepCardArt",
+      "effects": [
+        "@HappenstanceKeepAttach"
+      ],
+      "traits": [
+        "@Randomized",
+        "@RoomModifier2"
+      ],
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ]
+    },
+    {
+      "id": "EntropicSpire",
+      "cost": 3,
+      "card_type": "room",
+      "names": {
+        "english": "Entropic Spire",
+        "chinese": "熵能尖塔"
+      },
+      "rarity": "rare",
+      "targets_room": true,
+      "targetless": true,
+      "class": "@ClassBasic",
+      "card_art": "@EntropicSpireCardArt",
+      "effects": [
+        "@EntropicSpireAttach"
+      ],
+      "traits": [
+        "@Randomized",
+        "@RoomModifier3"
+      ],
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "BasicRoomCardAttach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@BasicRoomCardUpgrade"
+    },
+    {
+      "id": "HappenstanceKeepAttach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@HappenstanceKeepUpgrade"
+    },
+    {
+      "id": "EntropicSpireAttach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@EntropicSpireUpgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "BasicRoomCardUpgrade",
+      "bonus_damage": 10,
+      "bonus_hp": 10,
+      "icon": "@BasicRoomIcon",
+      "room_modifier_upgrades": [
+        "@BasicRoomCardAdjustCapacity"
+      ]
+    },
+    {
+      "id": "HappenstanceKeepUpgrade",
+      "bonus_damage": 8,
+      "bonus_hp": 12,
+      "icon": "@BasicRoomIcon",
+      "room_modifier_upgrades": [
+        "@HappenstanceKeepAdjustCapacity"
+      ]
+    },
+    {
+      "id": "EntropicSpireUpgrade",
+      "bonus_damage": 15,
+      "bonus_hp": 15,
+      "icon": "@BasicRoomIcon",
+      "room_modifier_upgrades": [
+        "@EntropicSpireAdjustCapacity"
+      ]
+    }
+  ],
+  "room_modifiers": [
+    {
+      "id": "BasicRoomCardAdjustCapacity",
+      "name": "RoomStateCapacityModifier",
+      "param_int": 2
+    },
+    {
+      "id": "HappenstanceKeepAdjustCapacity",
+      "name": "RoomStateCapacityModifier",
+      "param_int": 1
+    },
+    {
+      "id": "EntropicSpireAdjustCapacity",
+      "name": "RoomStateCapacityModifier",
+      "param_int": 3
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "BasicRoomCardCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@BasicRoomCardCardSprite"
+        }
+      }
+    },
+    {
+      "id": "HappenstanceKeepCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@HappenstanceKeepCardSprite"
+        }
+      }
+    },
+    {
+      "id": "EntropicSpireCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@EntropicSpireCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicRoomCardCardSprite",
+      "path": "textures/card_art/BasicRoom.png"
+    },
+    {
+      "id": "HappenstanceKeepCardSprite",
+      "path": "textures/card_art/BasicRoom.png"
+    },
+    {
+      "id": "EntropicSpireCardSprite",
+      "path": "textures/card_art/BasicRoom.png"
+    },
+    {
+      "id": "BasicRoomIcon",
+      "path": "textures/icons/BasicRoomIcon.png"
+    }
+  ]
+}

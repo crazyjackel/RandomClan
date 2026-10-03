@@ -1,0 +1,43 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "UnfixedBlight",
+      "cost": 3,
+      "card_type": "spell",
+      "names": {
+        "english": "Unfixed Blight",
+        "chinese": "不定疫病"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@UnfixedBlightCardArt",
+      "pools": [
+        "MegaPool"
+      ],
+      "traits": [
+        "@Randomized",
+        "@SpellModifier2"
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "UnfixedBlightCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@UnfixedBlightCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "UnfixedBlightCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

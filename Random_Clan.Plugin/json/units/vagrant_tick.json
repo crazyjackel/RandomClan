@@ -2,15 +2,15 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicDraftUnit",
+      "id": "VagrantTick",
       "names": {
-        "english": "Stray Imp",
-        "chinese": "流浪小恶魔"
+        "english": "Vagrant Tick",
+        "chinese": "流浪蜱虫"
       },
-      "card_art": "@BasicDraftUnitCardArt",
+      "card_art": "@VagrantTickCardArt",
       "cost": 1,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "common",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
@@ -18,22 +18,22 @@
         "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicDraftUnit"
+        "@SpawnVagrantTick"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier1"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicDraftUnitCharacter",
+      "id": "VagrantTickCharacter",
       "names": {
-        "english": "Stray Imp",
-        "chinese": "流浪小恶魔"
+        "english": "Vagrant Tick",
+        "chinese": "流浪蜱虫"
       },
-      "character_art": "@BasicDraftUnitCharacterArt",
+      "character_art": "@VagrantTickCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -43,57 +43,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicDraftUnit",
+      "id": "SpawnVagrantTick",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicDraftUnitCharacter"
+      "param_character": "@VagrantTickCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicDraftUnitCardArt",
+      "id": "VagrantTickCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicDraftUnitCardSprite"
+          "sprite": "@VagrantTickCardSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCharacterArt",
+      "id": "VagrantTickCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicDraftUnitCharacterSprite"
+          "sprite": "@VagrantTickCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCardArt",
+      "id": "VagrantTickCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicDraftUnitCardSprite"
+          "sprite": "@VagrantTickCardSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCharacterArt",
+      "id": "VagrantTickCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicDraftUnitCharacterSprite"
+          "sprite": "@VagrantTickCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicDraftUnitCardSprite",
+      "id": "VagrantTickCardSprite",
       "path": "textures/card_art/BasicDraftUnit.png"
     },
     {
-      "id": "BasicDraftUnitCharacterSprite",
+      "id": "VagrantTickCharacterSprite",
       "path": "textures/character_art/BasicDraftUnit.png"
     }
   ]

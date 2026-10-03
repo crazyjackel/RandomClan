@@ -2,24 +2,23 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "LooseWisp",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Loose Wisp",
+        "chinese": "散逸幽火"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@LooseWispCardArt",
+      "cost": 1,
       "card_type": "monster",
       "rarity": "uncommon",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
       "pools": [
-        "UnitsAllBanner",
-        "@UnitsBasicClanBanner"
+        "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnLooseWisp"
       ],
       "traits": [
         "@Randomized",
@@ -29,74 +28,73 @@
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "LooseWispCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Loose Wisp",
+        "chinese": "散逸幽火"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@LooseWispCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
-        "SubtypesData_BannerUnit",
         "@BasicSubtype"
       ]
     }
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnLooseWisp",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@LooseWispCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "LooseWispCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@LooseWispCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "LooseWispCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@LooseWispCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "LooseWispCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@LooseWispCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "LooseWispCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@LooseWispCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "LooseWispCardSprite",
+      "path": "textures/card_art/BasicDraftUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "LooseWispCharacterSprite",
+      "path": "textures/character_art/BasicDraftUnit.png"
     }
   ]
 }

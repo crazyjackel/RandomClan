@@ -2,15 +2,15 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicDraftUnit",
+      "id": "WaywardGrunt",
       "names": {
-        "english": "Stray Imp",
-        "chinese": "流浪小恶魔"
+        "english": "Wayward Grunt",
+        "chinese": "迷途兵卒"
       },
-      "card_art": "@BasicDraftUnitCardArt",
+      "card_art": "@WaywardGruntCardArt",
       "cost": 1,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "common",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
@@ -18,22 +18,22 @@
         "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicDraftUnit"
+        "@SpawnWaywardGrunt"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier1"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicDraftUnitCharacter",
+      "id": "WaywardGruntCharacter",
       "names": {
-        "english": "Stray Imp",
-        "chinese": "流浪小恶魔"
+        "english": "Wayward Grunt",
+        "chinese": "迷途兵卒"
       },
-      "character_art": "@BasicDraftUnitCharacterArt",
+      "character_art": "@WaywardGruntCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -43,57 +43,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicDraftUnit",
+      "id": "SpawnWaywardGrunt",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicDraftUnitCharacter"
+      "param_character": "@WaywardGruntCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicDraftUnitCardArt",
+      "id": "WaywardGruntCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicDraftUnitCardSprite"
+          "sprite": "@WaywardGruntCardSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCharacterArt",
+      "id": "WaywardGruntCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicDraftUnitCharacterSprite"
+          "sprite": "@WaywardGruntCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCardArt",
+      "id": "WaywardGruntCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicDraftUnitCardSprite"
+          "sprite": "@WaywardGruntCardSprite"
         }
       }
     },
     {
-      "id": "BasicDraftUnitCharacterArt",
+      "id": "WaywardGruntCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicDraftUnitCharacterSprite"
+          "sprite": "@WaywardGruntCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicDraftUnitCardSprite",
+      "id": "WaywardGruntCardSprite",
       "path": "textures/card_art/BasicDraftUnit.png"
     },
     {
-      "id": "BasicDraftUnitCharacterSprite",
+      "id": "WaywardGruntCharacterSprite",
       "path": "textures/character_art/BasicDraftUnit.png"
     }
   ]

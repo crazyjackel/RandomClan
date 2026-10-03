@@ -2,101 +2,99 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "ArbitraryHorror",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Arbitrary Horror",
+        "chinese": "任意恐物"
       },
-      "card_art": "@BasicBannerUnitCardArt",
+      "card_art": "@ArbitraryHorrorCardArt",
       "cost": 2,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "rare",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
       "pools": [
-        "UnitsAllBanner",
-        "@UnitsBasicClanBanner"
+        "MegaPool"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnArbitraryHorror"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier3"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "ArbitraryHorrorCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Arbitrary Horror",
+        "chinese": "任意恐物"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@ArbitraryHorrorCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
-        "SubtypesData_BannerUnit",
         "@BasicSubtype"
       ]
     }
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnArbitraryHorror",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@ArbitraryHorrorCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ArbitraryHorrorCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ArbitraryHorrorCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ArbitraryHorrorCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ArbitraryHorrorCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "ArbitraryHorrorCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@ArbitraryHorrorCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "ArbitraryHorrorCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@ArbitraryHorrorCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "ArbitraryHorrorCardSprite",
+      "path": "textures/card_art/BasicAbilityUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "ArbitraryHorrorCharacterSprite",
+      "path": "textures/character_art/BasicAbilityUnit.png"
     }
   ]
 }

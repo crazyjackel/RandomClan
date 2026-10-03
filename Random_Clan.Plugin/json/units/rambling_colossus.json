@@ -2,15 +2,15 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "RamblingColossus",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Rambling Colossus",
+        "chinese": "漫游巨像"
       },
-      "card_art": "@BasicBannerUnitCardArt",
-      "cost": 2,
+      "card_art": "@RamblingColossusCardArt",
+      "cost": 3,
       "card_type": "monster",
-      "rarity": "uncommon",
+      "rarity": "rare",
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
@@ -19,22 +19,22 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnRamblingColossus"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier3"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "RamblingColossusCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Rambling Colossus",
+        "chinese": "漫游巨像"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@RamblingColossusCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,58 +45,58 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnRamblingColossus",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@RamblingColossusCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "RamblingColossusCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@RamblingColossusCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "RamblingColossusCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@RamblingColossusCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "RamblingColossusCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@RamblingColossusCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "RamblingColossusCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@RamblingColossusCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "id": "RamblingColossusCardSprite",
+      "path": "textures/card_art/BasicAbilityUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "id": "RamblingColossusCharacterSprite",
+      "path": "textures/character_art/BasicAbilityUnit.png"
     }
   ]
 }

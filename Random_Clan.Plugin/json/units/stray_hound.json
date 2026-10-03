@@ -2,12 +2,12 @@
   "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
   "cards": [
     {
-      "id": "BasicBannerUnit",
+      "id": "StrayHound",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Stray Hound",
+        "chinese": "流浪猎犬"
       },
-      "card_art": "@BasicBannerUnitCardArt",
+      "card_art": "@StrayHoundCardArt",
       "cost": 2,
       "card_type": "monster",
       "rarity": "uncommon",
@@ -19,22 +19,22 @@
         "@UnitsBasicClanBanner"
       ],
       "effects": [
-        "@SpawnBasicBannerUnit"
+        "@SpawnStrayHound"
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier2"
+        "@UnitModifier1"
       ]
     }
   ],
   "characters": [
     {
-      "id": "BasicBannerUnitCharacter",
+      "id": "StrayHoundCharacter",
       "names": {
-        "english": "Driftless Wraith",
-        "chinese": "无根幽灵"
+        "english": "Stray Hound",
+        "chinese": "流浪猎犬"
       },
-      "character_art": "@BasicBannerUnitCharacterArt",
+      "character_art": "@StrayHoundCharacterArt",
       "health": 7,
       "attack_damage": 7,
       "subtypes": [
@@ -45,57 +45,57 @@
   ],
   "effects": [
     {
-      "id": "SpawnBasicBannerUnit",
+      "id": "SpawnStrayHound",
       "name": "CardEffectSpawnMonster",
       "target_mode": "room",
-      "param_character": "@BasicBannerUnitCharacter"
+      "param_character": "@StrayHoundCharacter"
     }
   ],
   "game_objects": [
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "StrayHoundCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@StrayHoundCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "StrayHoundCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@StrayHoundCharacterSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCardArt",
+      "id": "StrayHoundCardArt",
       "type": "card_art",
       "extensions": {
         "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
+          "sprite": "@StrayHoundCardSprite"
         }
       }
     },
     {
-      "id": "BasicBannerUnitCharacterArt",
+      "id": "StrayHoundCharacterArt",
       "type": "character_art",
       "extensions": {
         "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
+          "sprite": "@StrayHoundCharacterSprite"
         }
       }
     }
   ],
   "sprites": [
     {
-      "id": "BasicBannerUnitCardSprite",
+      "id": "StrayHoundCardSprite",
       "path": "textures/card_art/BasicBannerUnit.png"
     },
     {
-      "id": "BasicBannerUnitCharacterSprite",
+      "id": "StrayHoundCharacterSprite",
       "path": "textures/character_art/BasicBannerUnit.png"
     }
   ]
