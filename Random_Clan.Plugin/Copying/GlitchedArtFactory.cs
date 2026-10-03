@@ -9,8 +9,8 @@ using UnityEngine.UI;
 namespace Random_Clan.Plugin.Copying
 {
     /// <summary>
-    /// Clones donor unit art prefabs and applies built-in CardEffects Distortion / character tint
-    /// so randomized monsters read as visually wrong without mutating shared vanilla assets.
+    /// Clones donor card-art prefabs and applies CardEffects Distortion.
+    /// Character prefabs are always shared from the donor (cloning them breaks CharacterUI).
     /// </summary>
     public sealed class GlitchedArtFactory
     {
@@ -21,19 +21,14 @@ namespace Random_Clan.Plugin.Copying
         {
             DestroyPreviousClones(slot.name);
 
-            var cardOk = TryApplyCardArt(slot, donor);
-            var characterOk = TryApplyCharacterArt(slot, slotCharacter, donorCharacter);
+            // Always keep the donor character prefab. Cloning + rewrapping character prefabs
+            // leaves CharacterUI lists/containers null and crashes RefreshIconsInternal on spawn.
+            CopyCharacterArtRef(slotCharacter, donorCharacter);
 
-            if (!cardOk)
+            if (!TryApplyCardArt(slot, donor))
             {
                 Plugin.Logger.LogWarning($"Glitch card art fallback (shared donor) for {slot.name}");
                 slot.CopyCardArtFrom(donor);
-            }
-
-            if (!characterOk)
-            {
-                Plugin.Logger.LogWarning($"Glitch character art fallback (shared donor) for {slot.name}");
-                CopyCharacterArtRef(slotCharacter, donorCharacter);
             }
         }
 
@@ -58,50 +53,12 @@ namespace Random_Clan.Plugin.Copying
             return true;
         }
 
-        private bool TryApplyCharacterArt(CardData slot, CharacterData slotCharacter, CharacterData donorCharacter)
-        {
-            var source = ResolveCharacterArt(donorCharacter);
-            if (source == null)
-                return false;
-
-            var clone = InstantiateClone(source, $"{slot.name}_GlitchedCharacterArt");
-            if (clone == null)
-                return false;
-
-            if (!ApplyCharacterGlitch(clone))
-            {
-                UnityEngine.Object.Destroy(clone);
-                return false;
-            }
-
-            TrackClone(slot.name, clone);
-            SetCharacterArtRef(slotCharacter, Wrap(clone, $"{slot.name}_GlitchedCharacterArt"));
-            return true;
-        }
-
         private static GameObject? ResolveCardArt(CardData donor)
         {
             if (donor.GetCardArtPrefabVariant(out var prefab) && prefab != null)
                 return prefab;
 
             var field = AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef");
-            return ResolveAssetReference(field?.GetValue(donor) as AssetReferenceGameObject);
-        }
-
-        private static GameObject? ResolveCharacterArt(CharacterData donor)
-        {
-            try
-            {
-                var prefab = donor.GetCharacterPrefabVariant();
-                if (prefab != null)
-                    return prefab;
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.LogWarning($"GetCharacterPrefabVariant failed: {ex.Message}");
-            }
-
-            var field = AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef");
             return ResolveAssetReference(field?.GetValue(donor) as AssetReferenceGameObject);
         }
 
@@ -249,75 +206,6 @@ namespace Random_Clan.Plugin.Copying
             return -1;
         }
 
-        private static bool ApplyCharacterGlitch(GameObject characterRoot)
-        {
-            var applied = false;
-
-            var quad = characterRoot.transform.Find("CharacterScale/CharacterUI/Quad_Default");
-            if (quad != null)
-            {
-                var meshRenderer = quad.GetComponent<MeshRenderer>();
-                if (meshRenderer != null)
-                    applied |= TintRendererMaterials(meshRenderer);
-            }
-
-            var spine = characterRoot.transform.Find("CharacterScale/CharacterUI/SpineMeshes");
-            if (spine != null && spine.gameObject.activeSelf)
-            {
-                foreach (var renderer in spine.GetComponentsInChildren<Renderer>(true))
-                    applied |= TintRendererMaterials(renderer);
-            }
-
-            if (!applied)
-            {
-                foreach (var renderer in characterRoot.GetComponentsInChildren<Renderer>(true))
-                    applied |= TintRendererMaterials(renderer);
-            }
-
-            return applied;
-        }
-
-        private static bool TintRendererMaterials(Renderer renderer)
-        {
-            if (renderer == null)
-                return false;
-
-            var materials = renderer.materials;
-            if (materials == null || materials.Length == 0)
-                return false;
-
-            var any = false;
-            for (var i = 0; i < materials.Length; i++)
-            {
-                var material = materials[i];
-                if (material == null)
-                    continue;
-
-                if (material.HasProperty("_Tint"))
-                {
-                    material.SetColor("_Tint", ModificationTuning.CharacterGlitchTint);
-                    any = true;
-                }
-
-                if (material.HasProperty("_Color"))
-                {
-                    var color = material.GetColor("_Color");
-                    material.SetColor("_Color", Color.Lerp(color, ModificationTuning.CharacterGlitchTint, 0.45f));
-                    any = true;
-                }
-
-                if (material.HasProperty("_GrayScale_Factor"))
-                {
-                    material.SetFloat("_GrayScale_Factor", ModificationTuning.CharacterGlitchGrayscale);
-                    any = true;
-                }
-            }
-
-            if (any)
-                renderer.materials = materials;
-            return any;
-        }
-
         private static AssetReferenceGameObject Wrap(GameObject clone, string key)
         {
             var assetRef = new AssetReferenceGameObject();
@@ -327,9 +215,6 @@ namespace Random_Clan.Plugin.Copying
 
         private static void SetCardArtRef(CardData slot, AssetReferenceGameObject assetRef)
             => AccessTools.Field(typeof(CardData), "cardArtPrefabVariantRef")?.SetValue(slot, assetRef);
-
-        private static void SetCharacterArtRef(CharacterData slot, AssetReferenceGameObject assetRef)
-            => AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.SetValue(slot, assetRef);
 
         private static void CopyCharacterArtRef(CharacterData slot, CharacterData donor)
         {
