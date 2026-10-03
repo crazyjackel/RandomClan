@@ -1,0 +1,78 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "BasicCommonSpellCard",
+      "cost": 2,
+      "card_type": "spell",
+      "names": {
+        "english": "Common Card",
+        "chinese": "示例法术"
+      },
+      "descriptions": {
+        "english": "Apply [dazed] [effect0.status0.power] and [mute] [effect1.status0.power] to an enemy unit.",
+        "chinese": "对一个敌方单位施加[dazed] [effect0.status0.power] 和[mute] [effect1.status0.power]。"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@BasicCommonSpellCardArt",
+      "effects": [
+        "@BasicCommonSpellApplyDazed",
+        "@BasicCommonSpellApplyMuted"
+      ],
+      "pools": ["MegaPool"],
+      "traits": ["@Consume"],
+      "lore_tooltips": [
+        {
+          "english": "Example common card.",
+          "chinese": "示例剧情文本。"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "BasicCommonSpellApplyDazed",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_status_effects": [
+        {
+          "status": "dazed",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "BasicCommonSpellApplyMuted",
+      "name": "CardEffectAddStatusEffect",
+      "target_mode": "last_targeted_characters",
+      "target_team": "heroes",
+      "param_status_effects": [
+        {
+          "status": "muted",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "BasicCommonSpellCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@BasicCommonSpellCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicCommonSpellCardSprite",
+      "path": "textures/card_art/BasicCommonSpell.png"
+    }
+  ]
+}

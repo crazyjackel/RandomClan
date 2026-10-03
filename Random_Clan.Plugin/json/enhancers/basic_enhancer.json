@@ -1,0 +1,59 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "relics": [
+    {
+      "id": "Basicstone",
+      "type": "enhancer",
+      "names": {
+        "english": "Basicstone",
+        "chinese": "示例石"
+      },
+      "descriptions": {
+        "english": "Upgrade a unit with +[effect0.upgrade.bonusdamage][attack] +[effect0.upgrade.bonushp][health] and [effect0.upgrade.bonussize][capacity].",
+        "chinese": "升级一个单位，使其获得 +[effect0.upgrade.bonusdamage][attack]，+[effect0.upgrade.bonushp][health]，[effect0.upgrade.bonussize][capacity]。"
+      },
+      "relic_effects": [ "@BasicstoneEnhancer" ],
+      "icon": "@BasicstoneIcon",
+      "extensions": [
+        {
+          "enhancer": {
+            "class": "@ClassBasic",
+            "pools": ["UnitUpgradePoolCommon"],
+            "rarity": "common"
+          }
+        }
+      ]
+    }
+  ],
+  "relic_effects": [
+    {
+      "id": "BasicstoneEnhancer",
+      "name": "RelicEffectCardUpgrade",
+      "param_card_type": "monster",
+      "param_upgrade": "@BasicstoneUpgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "BasicstoneUpgrade",
+      "titles": {
+        "english": "Basicstone",
+        "chinese": "示例石"
+      },
+      "descriptions": {
+        "english": "+[bonusdamage][attack] +[bonushp][health] and [bonussize][capacity].",
+        "chinese": "获得 +[bonusdamage][attack]，+[bonushp][health]，[bonussize][capacity]。"
+      },
+      "icon": "@BasicstoneIcon",
+      "bonus_damage": 20,
+      "bonus_hp": 20,
+      "bonus_size": -1
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicstoneIcon",
+      "path": "textures/icons/Basicstone.png"
+    }
+  ]
+}

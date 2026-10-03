@@ -1,0 +1,57 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "ChampionAStarterCard",
+      "cost": 1,
+      "card_type": "spell",
+      "names": {
+        "english": "Starter Card",
+        "chinese": "示例初始卡牌"
+      },
+      "descriptions": {
+        "english": "Deal [effect0.power] damage to an enemy unit.",
+        "chinese": "对一个敌方单位造成 [effect0.power] 点伤害。"
+      },
+      "rarity": "common",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@ChampionAStarterCardArt",
+      "effects": [ "@ChampionAStarterDealTwentyDamage" ],
+      "pools": [ "StarterCardsOnly" ],
+      "lore_tooltips": [
+        {
+          "english": "Starter card for Champion A",
+          "chinese": "示例剧情文本。"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "ChampionAStarterDealTwentyDamage",
+      "name": "CardEffectDamage",
+      "target_mode": "drop_target_character",
+      "target_team": "heroes",
+      "param_int": 20
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "ChampionAStarterCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@ChampionAStarterCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "ChampionAStarterCardSprite",
+      "path": "textures/card_art/ChampionAStarter.png"
+    }
+  ]
+}

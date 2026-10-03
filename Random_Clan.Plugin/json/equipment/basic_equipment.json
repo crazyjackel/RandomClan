@@ -1,0 +1,80 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "BasicEquipmentCard",
+      "cost": 2,
+      "card_type": "equipment",
+      "names": {
+        "english": "Basic Equipment",
+        "chinese": "示例装备"
+      },
+      "descriptions": {
+        "english": "[effect0.upgrade.bonussize][capacity]. Cannot reduce [capacity] below 1.",
+        "chinese": "[effect0.upgrade.bonussize][capacity]。无法将[capacity]降到低于1。"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": false,
+      "class": "@ClassBasic",
+      "card_art": "@BasicEquipmentCardArt",
+      "effects": [
+        "@BasicEquipmentEquip"
+      ],
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentDraftPool",
+        "RoomAndEquipmentMerchant_EquipmentPool",
+        "EquipmentPoolNonEnemy",
+        "FreeEquipmentMutatorPool",
+        "RedCrownEquipmentPool",
+        "RandomGraftedEquipmentForEvent_NoVoidArms_EquipmentPool"
+      ],
+      "lore_tooltips": [
+        {
+          "english": "Example equipment. Equipment is available to acquire in events (Red Crown, Plague Doctor) and Truffles (FreeEquipmentMutatorPool). RoomAndEquipmentMerchant_EquipmentPool is required. EquipmentPoolNonEnemy is for Swordmaiden.",
+          "chinese": "这个装备也可以在事件中获得。RoomAndEquipmentMerchant_EquipmentPool是必选的。FreeEquipmentMutatorPool对应松露犬，EquipmentPoolNonEnemy对应持剑侍女。"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "BasicEquipmentEquip",
+      "name": "CardEffectAttachEquipment",
+      "target_mode": "drop_target_character",
+      "target_team": "monsters",
+      "param_upgrade": "@BasicEquipmentUpgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "BasicEquipmentUpgrade",
+      "bonus_damage": 25,
+      "bonus_hp": 15,
+      "bonus_size": -1,
+      "icon": "@BasicEquipmentIcon"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "BasicEquipmentCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@BasicEquipmentCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicEquipmentCardSprite",
+      "path": "textures/card_art/BasicEquipment.png"
+    },
+    {
+      "id": "BasicEquipmentIcon",
+      "path": "textures/icons/BasicEquipmentIcon.png"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "map_nodes": [
+    {
+      "id": "RewardNodeUnitPackBasicClan",
+      "type": "reward",
+      "map_icon": "@BasicBannerMapIcon",
+      "minimap_icon": "@ClanBannerMinimapIcon",
+      "prefab": "@BasicClanMapIcon",
+      "titles": {
+        "english": "Basic Banner",
+        "chinese": "示例战旗"
+      },
+      "descriptions": {
+        "english": "Gain a Basic Unit",
+        "chinese": "获得一个示例单位。"
+      },
+      "pools": [
+        "RandomChosenMainClassUnit",
+        "RandomChosenSubClassUnit"
+      ],
+      "is_banner_node": true,
+      "extensions": [
+        {
+          "reward": {
+            "class": "@ClassBasic",
+            "rewards": [
+              "@BasicBannerReward"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "rewards": [
+    {
+      "id": "BasicBannerReward",
+      "type": "draft",
+      "costs": [ 100 ],
+      "extensions": [
+        {
+          "draft": {
+            "draft_pool": "@UnitsBasicClanBanner",
+            "class_type": "main|subclass|nonclass",
+            "draft_options_count": 2,
+            "rarity_floor": "uncommon",
+            "ignore_relic_rarity_override": true,
+            "is_service_merchant_reward": true
+          }
+        }
+      ]
+    }
+  ],
+  "card_pools": [
+    {
+      "id": "UnitsBasicClanBanner"
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "BasicClanMapIcon",
+      "type": "map_node_icon",
+      "extensions": {
+        "map_node_icon": {
+          "disabled_sprite": "@BasicBannerDisabledMapIcon",
+          "enabled_sprite": "@BasicBannerEnabledMapIcon",
+          "frozen_sprite": "@BasicBannerFrozenMapIcon",
+          "visited_sprite_disabled": "@BasicBannerVisitedDisabledIcon"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicBannerMapIcon",
+      "path": "textures/banners/BasicBanner_MapIcon.png"
+    },
+    {
+      "id": "ClanBannerMinimapIcon",
+      "path": "textures/banners/ClanBannerMinimapIcon.png"
+    },
+    {
+      "id": "BasicBannerDisabledMapIcon",
+      "path": "textures/banners/BasicBanner_Disabled.png"
+    },
+    {
+      "id": "BasicBannerEnabledMapIcon",
+      "path": "textures/banners/BasicBanner_Enabled.png"
+    },
+    {
+      "id": "BasicBannerFrozenMapIcon",
+      "path": "textures/banners/BasicBanner_Frozen.png"
+    },
+    {
+      "id": "BasicBannerVisitedDisabledIcon",
+      "path": "textures/banners/BasicBanner_VisitedDisabled.png"
+    }
+  ]
+}

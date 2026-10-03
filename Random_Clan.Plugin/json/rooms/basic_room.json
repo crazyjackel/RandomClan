@@ -1,0 +1,82 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "cards": [
+    {
+      "id": "BasicRoomCard",
+      "cost": 2,
+      "card_type": "room",
+      "names": {
+        "english": "Basic Room",
+        "chinese": "示例房间"
+      },
+      "descriptions": {
+        "english": "+[effect0.upgrade.roommodifier0.power][capacity]. Grant friendly units +[effect0.upgrade.bonusdamage][attack] and +[effect0.upgrade.bonushp][health]",
+        "chinese": "示例房间"
+      },
+      "rarity": "uncommon",
+      "targets_room": true,
+      "targetless": true,
+      "class": "@ClassBasic",
+      "card_art": "@BasicRoomCardArt",
+      "effects": [ "@BasicRoomAttach" ],
+      "pools": [
+        "MegaPool",
+        "RoomAndEquipmentMerchant_RoomPool",
+        "RoomAndEquipmentDraftPool",
+        "TrainRoomPool"
+      ],
+      "lore_tooltips": [
+        {
+          "english": "Example room. RoomAndEquipmentMerchant_RoomPool is required if adding to an event/mutator pool. TrainRoomPool is the pool for the It's Free Real Estate Mutator.",
+          "chinese": "RoomAndEquipmentMerchant_RoomPool对应事件/转变器，TrainRoomPool对应“免费房地产”转变器。"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "id": "BasicRoomAttach",
+      "name": "CardEffectAttachTrainRoomAttachment",
+      "target_mode": "room",
+      "target_team": "monsters",
+      "param_upgrade": "@BasicRoomUpgrade"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "BasicRoomUpgrade",
+      "bonus_damage": 10,
+      "bonus_hp": 10,
+      "icon": "@BasicRoomIcon",
+      "room_modifier_upgrades": [ "@BasicRoomAdjustCapacity" ]
+    }
+  ],
+  "room_modifiers": [
+    {
+      "id": "BasicRoomAdjustCapacity",
+      "name": "RoomStateCapacityModifier",
+      "param_int": 2
+    }
+  ],
+  "game_objects": [
+    {
+      "id": "BasicRoomCardArt",
+      "type": "card_art",
+      "extensions": {
+        "card_art": {
+          "sprite": "@BasicRoomCardSprite"
+        }
+      }
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicRoomCardSprite",
+      "path": "textures/card_art/BasicRoom.png"
+    },
+    {
+      "id": "BasicRoomIcon",
+      "path": "textures/icons/BasicRoomIcon.png"
+    }
+  ]
+}

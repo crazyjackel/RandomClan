@@ -1,0 +1,101 @@
+{
+  "$schema": "https://github.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/releases/latest/download/schema.json",
+  "classes": [
+    {
+      "id": "ClassBasic",
+      "titles": {
+        "english": "Basic",
+        "chinese": "示例"
+      },
+      "descriptions": {
+        "english": "A basic minimal clan example as primary.",
+        "chinese": "示例氏族介绍。"
+      },
+      "subclass_descriptions": {
+        "english": "A basic minimal clan example as secondary.",
+        "chinese": "示例氏族介绍。"
+      },
+      "event_titles": {
+        "english": "<wonderous>Basic citizen</wonderous>"
+      },
+      "icons": {
+        "small": "@BasicClanSmallIcon",
+        "medium": "@BasicClanMediumIcon",
+        "large": "@BasicClanLargeIcon",
+        "silhouette": "@BasicClanSilhouetteIcon"
+      },
+      "card_draft_icon": "@CardDraftIcon",
+      "class_select_character_displays": [
+        "@ChampionAClassDisplayCharacterArt"
+      ],
+      "card_style": "@BasicClanCardStyle",
+      "ui_color": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+      },
+      "ui_color_dark": {
+        "r": 0.75,
+        "g": 0.75,
+        "b": 0.75
+      },
+      "ui_gradient": [
+        {
+          "time": 0.0,
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        },
+        {
+          "time": 1.0,
+          "color": {
+            "r": 0.75,
+            "g": 0.75,
+            "b": 0.75
+          }
+        }
+      ],
+      "champions": [
+        {
+          "id": "BasicChampionA",
+          "card_data": "@ChampionACard",
+          "starter_card": "@ChampionAStarterCard",
+          "upgrade_tree": [
+            [
+              "@ChampionAUpgradePathI",
+              "@ChampionAUpgradePathII",
+              "@ChampionAUpgradePathIII"
+            ]
+          ],
+          "icon": "@ChampionAIcon",
+          "locked_icon": "@ChampionALockedIcon",
+          "portrait": "@ChampionAPortrait"
+        }
+      ]
+    }
+  ],
+  "sprites": [
+    {
+      "id": "BasicClanSmallIcon",
+      "path": "textures/icons/BasicClanSmallIcon.png"
+    },
+    {
+      "id": "BasicClanMediumIcon",
+      "path": "textures/icons/BasicClanMediumIcon.png"
+    },
+    {
+      "id": "BasicClanLargeIcon",
+      "path": "textures/icons/BasicClanLargeIcon.png"
+    },
+    {
+      "id": "BasicClanSilhouetteIcon",
+      "path": "textures/icons/BasicClanSilhouetteIcon.png"
+    },
+    {
+      "id": "CardDraftIcon",
+      "path": "textures/icons/BasicClanCardDraft.png"
+    }
+  ]
+}
