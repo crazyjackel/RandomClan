@@ -67,24 +67,6 @@
           "sprite": "@StochasticBeastCharacterSprite"
         }
       }
-    },
-    {
-      "id": "StochasticBeastCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@StochasticBeastCardSprite"
-        }
-      }
-    },
-    {
-      "id": "StochasticBeastCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@StochasticBeastCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

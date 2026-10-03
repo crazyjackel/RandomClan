@@ -69,24 +69,6 @@
           "sprite": "@RamblingColossusCharacterSprite"
         }
       }
-    },
-    {
-      "id": "RamblingColossusCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@RamblingColossusCardSprite"
-        }
-      }
-    },
-    {
-      "id": "RamblingColossusCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@RamblingColossusCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

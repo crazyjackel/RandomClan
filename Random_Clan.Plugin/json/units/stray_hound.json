@@ -69,24 +69,6 @@
           "sprite": "@StrayHoundCharacterSprite"
         }
       }
-    },
-    {
-      "id": "StrayHoundCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@StrayHoundCardSprite"
-        }
-      }
-    },
-    {
-      "id": "StrayHoundCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@StrayHoundCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

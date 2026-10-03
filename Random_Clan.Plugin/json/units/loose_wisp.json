@@ -67,24 +67,6 @@
           "sprite": "@LooseWispCharacterSprite"
         }
       }
-    },
-    {
-      "id": "LooseWispCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@LooseWispCardSprite"
-        }
-      }
-    },
-    {
-      "id": "LooseWispCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@LooseWispCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

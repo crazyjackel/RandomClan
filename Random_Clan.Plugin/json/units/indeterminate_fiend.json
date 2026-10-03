@@ -69,24 +69,6 @@
           "sprite": "@IndeterminateFiendCharacterSprite"
         }
       }
-    },
-    {
-      "id": "IndeterminateFiendCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@IndeterminateFiendCardSprite"
-        }
-      }
-    },
-    {
-      "id": "IndeterminateFiendCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@IndeterminateFiendCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

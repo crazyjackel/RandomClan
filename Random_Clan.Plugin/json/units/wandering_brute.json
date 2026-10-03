@@ -69,24 +69,6 @@
           "sprite": "@WanderingBruteCharacterSprite"
         }
       }
-    },
-    {
-      "id": "WanderingBruteCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@WanderingBruteCardSprite"
-        }
-      }
-    },
-    {
-      "id": "WanderingBruteCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@WanderingBruteCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

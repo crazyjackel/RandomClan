@@ -67,24 +67,6 @@
           "sprite": "@MislaidGremlinCharacterSprite"
         }
       }
-    },
-    {
-      "id": "MislaidGremlinCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@MislaidGremlinCardSprite"
-        }
-      }
-    },
-    {
-      "id": "MislaidGremlinCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@MislaidGremlinCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

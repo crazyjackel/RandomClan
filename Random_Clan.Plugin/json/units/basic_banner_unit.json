@@ -69,24 +69,6 @@
           "sprite": "@BasicBannerUnitCharacterSprite"
         }
       }
-    },
-    {
-      "id": "BasicBannerUnitCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@BasicBannerUnitCardSprite"
-        }
-      }
-    },
-    {
-      "id": "BasicBannerUnitCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@BasicBannerUnitCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

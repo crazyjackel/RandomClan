@@ -69,24 +69,6 @@
           "sprite": "@RoamingShadeCharacterSprite"
         }
       }
-    },
-    {
-      "id": "RoamingShadeCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@RoamingShadeCardSprite"
-        }
-      }
-    },
-    {
-      "id": "RoamingShadeCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@RoamingShadeCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

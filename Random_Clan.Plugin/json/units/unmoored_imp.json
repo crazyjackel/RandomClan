@@ -69,24 +69,6 @@
           "sprite": "@UnmooredImpCharacterSprite"
         }
       }
-    },
-    {
-      "id": "UnmooredImpCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@UnmooredImpCardSprite"
-        }
-      }
-    },
-    {
-      "id": "UnmooredImpCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@UnmooredImpCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

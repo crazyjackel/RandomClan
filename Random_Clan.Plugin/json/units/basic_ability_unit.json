@@ -69,24 +69,6 @@
           "sprite": "@BasicAbilityUnitCharacterSprite"
         }
       }
-    },
-    {
-      "id": "BasicAbilityUnitCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@BasicAbilityUnitCardSprite"
-        }
-      }
-    },
-    {
-      "id": "BasicAbilityUnitCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@BasicAbilityUnitCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

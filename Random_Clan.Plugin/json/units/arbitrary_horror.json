@@ -67,24 +67,6 @@
           "sprite": "@ArbitraryHorrorCharacterSprite"
         }
       }
-    },
-    {
-      "id": "ArbitraryHorrorCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@ArbitraryHorrorCardSprite"
-        }
-      }
-    },
-    {
-      "id": "ArbitraryHorrorCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@ArbitraryHorrorCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [

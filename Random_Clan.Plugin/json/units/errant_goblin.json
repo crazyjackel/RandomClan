@@ -69,24 +69,6 @@
           "sprite": "@ErrantGoblinCharacterSprite"
         }
       }
-    },
-    {
-      "id": "ErrantGoblinCardArt",
-      "type": "card_art",
-      "extensions": {
-        "card_art": {
-          "sprite": "@ErrantGoblinCardSprite"
-        }
-      }
-    },
-    {
-      "id": "ErrantGoblinCharacterArt",
-      "type": "character_art",
-      "extensions": {
-        "character_art": {
-          "sprite": "@ErrantGoblinCharacterSprite"
-        }
-      }
     }
   ],
   "sprites": [
