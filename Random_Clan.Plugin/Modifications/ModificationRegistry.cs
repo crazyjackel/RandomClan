@@ -16,6 +16,7 @@ namespace Random_Clan.Plugin.Modifications
             Register(new NumberScaledModification());
             Register(new CardStatusCountModification());
             Register(new CardStatusSwapModification());
+            Register(new CardStatusInjectModification());
             Register(new CardTriggerTypeModification());
             Register(new TraitParamModification());
             Register(new TraitInjectModification());

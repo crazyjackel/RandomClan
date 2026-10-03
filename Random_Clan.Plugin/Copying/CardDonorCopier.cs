@@ -7,8 +7,6 @@ namespace Random_Clan.Plugin.Copying
 {
     public sealed class CardDonorCopier
     {
-        private readonly GlitchedArtFactory _glitchedArt = new();
-
         public void CopyOnto(CardData slot, CardData donor, IReadOnlyList<CardTraitData> markerTraits)
         {
             if (slot.GetCardTypeValue() == CardType.Monster)
@@ -34,7 +32,6 @@ namespace Random_Clan.Plugin.Copying
             if (rarity != null)
                 slot.SetRarityObject(rarity);
             slot.SetCost(donor.GetCostValue());
-            slot.CopyCardArtFrom(donor);
 
             var donorEffects = donor.GetEffects() ?? [];
             var effectClones = new List<CardEffectData>(donorEffects.Count);
@@ -77,12 +74,11 @@ namespace Random_Clan.Plugin.Copying
             if (slotChar == null || donorChar == null)
             {
                 Plugin.Logger.LogWarning($"Unit copy skipped character: {slot.name} <- {donor.name}");
-                slot.CopyCardArtFrom(donor);
                 return;
             }
 
+            // Keep the slot's own card/character art; only copy mechanics from the donor.
             CopyCharacterMechanics(slotChar, donorChar, slot);
-            _glitchedArt.Apply(slot, donor, slotChar, donorChar);
         }
 
         private void CopyCharacterMechanics(CharacterData slot, CharacterData donor, CardData slotCard)

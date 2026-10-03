@@ -12,12 +12,22 @@ namespace Random_Clan.Plugin.Modifications.Cards
             if (ctx.InjectableTraits.Count == 0)
                 return;
 
-            var donor = ctx.InjectableTraits[rng.Next(ctx.InjectableTraits.Count)];
+            var traits = card.GetTraitList().Where(t => t != null).ToList();
+            var existingStates = new HashSet<string>(
+                traits.Select(t => t.traitStateName ?? ""),
+                StringComparer.Ordinal);
+
+            var pool = ctx.InjectableTraits
+                .Where(t => t != null && !existingStates.Contains(t.traitStateName ?? ""))
+                .ToList();
+            if (pool.Count == 0)
+                return;
+
+            var donor = pool[rng.Next(pool.Count)];
             var clone = donor.Copy();
             if (clone == null)
                 return;
 
-            var traits = card.GetTraitList().Where(t => t != null).ToList();
             traits.Add(clone);
             card.SetTraits(traits);
         }

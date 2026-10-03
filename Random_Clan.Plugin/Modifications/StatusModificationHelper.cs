@@ -46,28 +46,6 @@ namespace Random_Clan.Plugin.Modifications
             return true;
         }
 
-        public static bool TryInjectStartingStatus(
-            CharacterData character,
-            Random rng,
-            IReadOnlyList<string> statusIds)
-        {
-            if (statusIds.Count == 0)
-                return false;
-
-            var existing = character.GetStartingStatusEffectsArray();
-            var next = new StatusEffectStackData[existing.Length + 1];
-            for (var i = 0; i < existing.Length; i++)
-                next[i] = existing[i];
-
-            next[existing.Length] = new StatusEffectStackData
-            {
-                statusId = statusIds[rng.Next(statusIds.Count)],
-                count = Math.Max(1, 1.MutateBalanced(rng)),
-            };
-            character.SetStartingStatusEffectsArray(next);
-            return true;
-        }
-
         private static List<(CardEffectData Effect, StatusEffectStackData[] Statuses, int Index)> CollectCardEntries(
             CardData card)
         {

@@ -1,21 +1,33 @@
 using Random_Clan.Plugin.Constants;
 using Random_Clan.Plugin.Extensions;
 
-namespace Random_Clan.Plugin.Modifications
+namespace Random_Clan.Plugin.Modifications.Cards
 {
-    internal static class NumberModificationHelper
+    public sealed class NumberFixedModification : ICardModification
+    {
+        public bool CanModify(CardData card, RandomizeContext ctx)
+            => NumberMutation.HasPositiveParamInt(card, ctx);
+
+        public void Modify(CardData card, RandomizeContext ctx, Random rng)
+            => NumberMutation.Mutate(card, ctx, rng, fixedSteps: true);
+    }
+
+    public sealed class NumberScaledModification : ICardModification
+    {
+        public bool CanModify(CardData card, RandomizeContext ctx)
+            => NumberMutation.HasPositiveParamInt(card, ctx);
+
+        public void Modify(CardData card, RandomizeContext ctx, Random rng)
+            => NumberMutation.Mutate(card, ctx, rng, fixedSteps: false);
+    }
+
+    file static class NumberMutation
     {
         public static bool HasPositiveParamInt(CardData card, RandomizeContext ctx)
             => Targets(card, ctx).Any(t =>
                 t.GetEffects()?.Any(e => e != null && e.GetParamIntValue() > 0) == true);
 
-        public static void MutateFixed(CardData card, RandomizeContext ctx, Random rng)
-            => Mutate(card, ctx, rng, fixedSteps: true);
-
-        public static void MutateScaled(CardData card, RandomizeContext ctx, Random rng)
-            => Mutate(card, ctx, rng, fixedSteps: false);
-
-        private static void Mutate(CardData card, RandomizeContext ctx, Random rng, bool fixedSteps)
+        public static void Mutate(CardData card, RandomizeContext ctx, Random rng, bool fixedSteps)
         {
             foreach (var target in Targets(card, ctx))
             {
