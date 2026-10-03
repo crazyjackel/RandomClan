@@ -1,5 +1,6 @@
 using HarmonyLib;
 using Random_Clan.Plugin.Extensions;
+using TrainworksReloaded.Base.Prefab;
 using UnityEngine;
 
 namespace Random_Clan.Plugin.Copying
@@ -98,23 +99,10 @@ namespace Random_Clan.Plugin.Copying
             slot.CopyStartingStatusesFrom(donor);
 
             var donorAbility = donor.GetUnitAbilityCardData();
-            var slotAbility = slot.GetUnitAbilityCardData();
             if (donorAbility != null)
-            {
-                if (slotAbility != null)
-                {
-                    CopySpellLikeOnto(slotAbility, donorAbility);
-                    slot.SetUnitAbility(slotAbility);
-                }
-                else
-                {
-                    var abilityClone = ScriptableObject.CreateInstance<CardData>();
-                    abilityClone.name = $"{slotCard.name}_AbilityClone";
-                    CopySpellLikeOnto(abilityClone, donorAbility);
-                    abilityClone.SetIsUnitAbility(true);
-                    slot.SetUnitAbility(abilityClone);
-                }
-            }
+                slot.SetUnitAbility(CloneAbilityCard(donorAbility, $"{slotCard.name}_AbilityClone"));
+            else
+                slot.SetUnitAbility(null);
 
             var art = AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.GetValue(donor);
             if (art != null)
@@ -125,6 +113,53 @@ namespace Random_Clan.Plugin.Copying
                 var value = field?.GetValue(donor);
                 if (value != null)
                     field!.SetValue(slot, value);
+            }
+        }
+
+        private static CardData CloneAbilityCard(CardData donorAbility, string name)
+        {
+            // Instantiate preserves CardData asset fields (VFX, art, etc.) that CreateInstance leaves null.
+            var clone = UnityEngine.Object.Instantiate(donorAbility);
+            clone.name = name;
+            clone.SetIsUnitAbility(true);
+            EnsureCardVfxDefaults(clone);
+
+            var donorEffects = donorAbility.GetEffects() ?? [];
+            var effectClones = new List<CardEffectData>(donorEffects.Count);
+            foreach (var effect in donorEffects)
+            {
+                if (effect != null)
+                    effectClones.Add(DataCloner.CloneEffect(effect));
+            }
+            clone.SetEffects(effectClones);
+
+            var traitClones = new List<CardTraitData>();
+            foreach (var trait in donorAbility.GetTraitList())
+            {
+                if (trait != null && !trait.IsMarkerTrait())
+                    traitClones.Add(trait);
+            }
+            clone.SetTraits(traitClones);
+
+            var triggerClones = new List<CardTriggerEffectData>();
+            foreach (var trigger in donorAbility.GetTriggerList())
+            {
+                if (trigger != null)
+                    triggerClones.Add(DataCloner.CloneCardTrigger(trigger));
+            }
+            clone.SetTriggers(triggerClones);
+
+            return clone;
+        }
+
+        private static void EnsureCardVfxDefaults(CardData card)
+        {
+            foreach (var fieldName in new[] { "specialEdgeVFX", "offCooldownVFX" })
+            {
+                var field = AccessTools.Field(typeof(CardData), fieldName);
+                if (field == null || field.GetValue(card) != null)
+                    continue;
+                field.SetValue(card, VfxRegister.Default);
             }
         }
     }

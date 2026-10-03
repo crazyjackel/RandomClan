@@ -14,6 +14,17 @@ namespace Random_Clan.Plugin.Extensions
         public static bool IsChampionCard(this CardData card)
             => card.GetCardTypeValue() == CardType.Monster && card.GetRarityValue() == CollectableRarity.Champion;
 
+        public static bool IsBannerUnitCard(this CardData card)
+        {
+            if (card.GetCardTypeValue() != CardType.Monster || card.IsChampionCard())
+                return false;
+            var character = card.GetSpawnCharacterData();
+            if (character == null)
+                return false;
+            return character.GetSubtypeKeys().Any(s =>
+                s.Contains("BannerUnit", StringComparison.OrdinalIgnoreCase));
+        }
+
         public static List<CardTraitData> GetTraitList(this CardData card)
             => card.GetTraits()
                ?? AccessTools.Field(typeof(CardData), "traits")?.GetValue(card) as List<CardTraitData>

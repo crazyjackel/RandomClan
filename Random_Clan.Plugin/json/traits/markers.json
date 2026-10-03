@@ -113,71 +113,25 @@
       "name": "@CardTraitRandomized",
       "trait_is_removable": false
     },
-    {
-      "id": "SpellModifier1",
-      "name": "@CardTraitSpellModifier",
-      "param_int": 1,
-      "trait_is_removable": false
-    },
-    {
-      "id": "SpellModifier2",
-      "name": "@CardTraitSpellModifier",
-      "param_int": 2,
-      "trait_is_removable": false
-    },
-    {
-      "id": "SpellModifier3",
-      "name": "@CardTraitSpellModifier",
-      "param_int": 3,
-      "trait_is_removable": false
-    },
-    {
-      "id": "UnitModifier1",
-      "name": "@CardTraitUnitModifier",
-      "param_int": 1,
-      "trait_is_removable": false
-    },
-    {
-      "id": "UnitModifier2",
-      "name": "@CardTraitUnitModifier",
-      "param_int": 2,
-      "trait_is_removable": false
-    },
-    {
-      "id": "UnitModifier3",
-      "name": "@CardTraitUnitModifier",
-      "param_int": 3,
-      "trait_is_removable": false
-    },
-    {
-      "id": "RoomModifier1",
-      "name": "@CardTraitRoomModifier",
-      "param_int": 1,
-      "trait_is_removable": false
-    },
-    {
-      "id": "RoomModifier2",
-      "name": "@CardTraitRoomModifier",
-      "param_int": 2,
-      "trait_is_removable": false
-    },
-    {
-      "id": "RoomModifier3",
-      "name": "@CardTraitRoomModifier",
-      "param_int": 3,
-      "trait_is_removable": false
-    },
-    {
-      "id": "ChampionModifier2",
-      "name": "@CardTraitChampionModifier",
-      "param_int": 2,
-      "trait_is_removable": false
-    },
-    {
-      "id": "ChampionModifier3",
-      "name": "@CardTraitChampionModifier",
-      "param_int": 3,
-      "trait_is_removable": false
-    }
+    { "id": "SpellModifier1", "name": "@CardTraitSpellModifier", "param_int": 1, "trait_is_removable": false },
+    { "id": "SpellModifier2", "name": "@CardTraitSpellModifier", "param_int": 2, "trait_is_removable": false },
+    { "id": "SpellModifier3", "name": "@CardTraitSpellModifier", "param_int": 3, "trait_is_removable": false },
+    { "id": "SpellModifier5", "name": "@CardTraitSpellModifier", "param_int": 5, "trait_is_removable": false },
+    { "id": "SpellModifier8", "name": "@CardTraitSpellModifier", "param_int": 8, "trait_is_removable": false },
+    { "id": "UnitModifier1", "name": "@CardTraitUnitModifier", "param_int": 1, "trait_is_removable": false },
+    { "id": "UnitModifier2", "name": "@CardTraitUnitModifier", "param_int": 2, "trait_is_removable": false },
+    { "id": "UnitModifier3", "name": "@CardTraitUnitModifier", "param_int": 3, "trait_is_removable": false },
+    { "id": "UnitModifier5", "name": "@CardTraitUnitModifier", "param_int": 5, "trait_is_removable": false },
+    { "id": "UnitModifier8", "name": "@CardTraitUnitModifier", "param_int": 8, "trait_is_removable": false },
+    { "id": "RoomModifier1", "name": "@CardTraitRoomModifier", "param_int": 1, "trait_is_removable": false },
+    { "id": "RoomModifier2", "name": "@CardTraitRoomModifier", "param_int": 2, "trait_is_removable": false },
+    { "id": "RoomModifier3", "name": "@CardTraitRoomModifier", "param_int": 3, "trait_is_removable": false },
+    { "id": "RoomModifier5", "name": "@CardTraitRoomModifier", "param_int": 5, "trait_is_removable": false },
+    { "id": "RoomModifier8", "name": "@CardTraitRoomModifier", "param_int": 8, "trait_is_removable": false },
+    { "id": "ChampionModifier1", "name": "@CardTraitChampionModifier", "param_int": 1, "trait_is_removable": false },
+    { "id": "ChampionModifier2", "name": "@CardTraitChampionModifier", "param_int": 2, "trait_is_removable": false },
+    { "id": "ChampionModifier3", "name": "@CardTraitChampionModifier", "param_int": 3, "trait_is_removable": false },
+    { "id": "ChampionModifier5", "name": "@CardTraitChampionModifier", "param_int": 5, "trait_is_removable": false },
+    { "id": "ChampionModifier8", "name": "@CardTraitChampionModifier", "param_int": 8, "trait_is_removable": false }
   ]
 }

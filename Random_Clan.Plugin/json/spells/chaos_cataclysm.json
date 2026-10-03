@@ -19,7 +19,7 @@
       ],
       "traits": [
         "@Randomized",
-        "@SpellModifier3"
+        "@SpellModifier5"
       ]
     }
   ],

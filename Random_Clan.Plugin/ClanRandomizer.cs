@@ -19,6 +19,7 @@ namespace Random_Clan.Plugin
         private readonly ClassDataRegister _classes;
         private readonly CardUpgradeRegister _upgrades;
         private readonly StatusEffectDataRegister _statuses;
+        private readonly CardPoolRegister _cardPools;
         private readonly GameDataClient _client;
         private readonly ModificationRegistry _modifications;
         private readonly CardDonorCopier _copier;
@@ -32,6 +33,7 @@ namespace Random_Clan.Plugin
             ClassDataRegister classes,
             CardUpgradeRegister upgrades,
             StatusEffectDataRegister statuses,
+            CardPoolRegister cardPools,
             GameDataClient client,
             ModificationRegistry modifications,
             CardDonorCopier copier)
@@ -41,6 +43,7 @@ namespace Random_Clan.Plugin
             _classes = classes;
             _upgrades = upgrades;
             _statuses = statuses;
+            _cardPools = cardPools;
             _client = client;
             _modifications = modifications;
             _copier = copier;
@@ -78,7 +81,8 @@ namespace Random_Clan.Plugin
             }
 
             var rng = new Random(seed);
-            var donors = BuildDonorPools(all);
+            var starterCards = BuildStarterSet(all);
+            var donors = BuildDonorPools(all, starterCards);
             var upgradePool = BuildChampionUpgradePool(all);
 
             var ctx = new RandomizeContext(saveManager, _cards, _traits, _classes, _upgrades, _statuses, _client)
@@ -87,20 +91,24 @@ namespace Random_Clan.Plugin
             };
 
             Plugin.Logger.LogInfo(
-                $"Random Clan seed={seed} slots={slots.Count} donors: spells={donors.Spells.Count} units={donors.Units.Count} champs={donors.Champions.Count} rooms={donors.Rooms.Count}");
+                $"Random Clan seed={seed} slots={slots.Count} starterDonors={donors.Starters.Count} " +
+                $"spellDonors={donors.ByKey.Count(kv => kv.Key.Type == CardType.Spell)} " +
+                $"unitDonors={donors.ByKey.Count(kv => kv.Key.Type == CardType.Monster)} " +
+                $"roomDonors={donors.ByKey.Count(kv => kv.Key.Type == CardType.TrainRoomAttachment)} " +
+                $"champDonors={donors.Champions.Count}");
 
             foreach (var slot in slots)
             {
                 var markers = slot.GetMarkerTraits();
-                var pool = SelectPool(slot, donors);
+                var pool = SelectPool(slot, donors, starterCards);
                 if (pool.Count == 0)
                 {
-                    Plugin.Logger.LogWarning($"No donors for {slot.name}");
+                    Plugin.Logger.LogWarning($"No donors for {slot.name} ({DescribeSlot(slot, starterCards)})");
                     continue;
                 }
 
                 var donor = pool[rng.Next(pool.Count)];
-                Plugin.Logger.LogInfo($"{slot.name} <- {donor.name}");
+                Plugin.Logger.LogInfo($"{slot.name} <- {donor.name} [{DescribeSlot(slot, starterCards)}]");
                 _copier.CopyOnto(slot, donor, markers);
 
                 ctx.Character = slot.GetSpawnCharacterData();
@@ -115,21 +123,66 @@ namespace Random_Clan.Plugin
             Plugin.Logger.LogInfo("Random Clan randomization complete.");
         }
 
-        private static List<CardData> SelectPool(CardData slot, DonorPools donors)
+        private static string DescribeSlot(CardData slot, HashSet<CardData> starters)
         {
             var type = slot.GetCardTypeValue();
             var rarity = slot.GetRarityValue();
-            return type switch
-            {
-                CardType.Spell => donors.Spells,
-                CardType.TrainRoomAttachment => donors.Rooms,
-                CardType.Monster when rarity == CollectableRarity.Champion => donors.Champions,
-                CardType.Monster => donors.Units,
-                _ => [],
-            };
+            var starter = starters.Contains(slot);
+            var banner = slot.IsBannerUnitCard();
+            return $"{type}/{rarity}" + (starter ? "/starter" : "") + (banner ? "/banner" : "");
         }
 
-        private static DonorPools BuildDonorPools(AllGameData all)
+        private static List<CardData> SelectPool(CardData slot, DonorPools donors, HashSet<CardData> starters)
+        {
+            var type = slot.GetCardTypeValue();
+            var rarity = slot.GetRarityValue();
+
+            if (type == CardType.Monster && rarity == CollectableRarity.Champion)
+                return donors.Champions;
+
+            if (starters.Contains(slot) || rarity == CollectableRarity.Starter)
+                return donors.Starters;
+
+            var key = new DonorKey(type, rarity, slot.IsBannerUnitCard());
+            if (donors.ByKey.TryGetValue(key, out var pool) && pool.Count > 0)
+                return pool;
+
+            // Soft fallback: same type+rarity ignoring banner flag.
+            key = new DonorKey(type, rarity, !key.Banner);
+            if (donors.ByKey.TryGetValue(key, out pool) && pool.Count > 0)
+                return pool;
+
+            return [];
+        }
+
+        private HashSet<CardData> BuildStarterSet(AllGameData all)
+        {
+            var starters = new HashSet<CardData>();
+
+            foreach (var classData in all.GetAllClassDatas())
+            {
+                var champions = AccessTools.Field(typeof(ClassData), "champions")?.GetValue(classData) as List<ChampionData>;
+                if (champions == null)
+                    continue;
+                foreach (var champion in champions)
+                {
+                    if (champion.starterCardData != null)
+                        starters.Add(champion.starterCardData);
+                }
+            }
+
+            if (_cardPools.TryGetValue("StarterCardsOnly", out var starterPool) && starterPool != null)
+            {
+                var into = new HashSet<CardData>();
+                starterPool.CollectAllCards(into);
+                foreach (var card in into)
+                    starters.Add(card);
+            }
+
+            return starters;
+        }
+
+        private static DonorPools BuildDonorPools(AllGameData all, HashSet<CardData> starters)
         {
             var pools = new DonorPools();
             foreach (var card in all.GetAllCardData())
@@ -137,23 +190,40 @@ namespace Random_Clan.Plugin
                 if (card == null || card.HasRandomized() || card.IsUnitAbility() || card.IsRoomAbility())
                     continue;
 
-                switch (card.GetCardTypeValue())
+                var type = card.GetCardTypeValue();
+                var rarity = card.GetRarityValue();
+
+                if (starters.Contains(card) || rarity == CollectableRarity.Starter)
+                {
+                    pools.Starters.Add(card);
+                    continue;
+                }
+
+                switch (type)
                 {
                     case CardType.Spell:
-                        pools.Spells.Add(card);
+                    case CardType.TrainRoomAttachment:
+                        Add(pools, new DonorKey(type, rarity, banner: false), card);
                         break;
-                    case CardType.Monster when card.GetRarityValue() == CollectableRarity.Champion:
+                    case CardType.Monster when rarity == CollectableRarity.Champion:
                         pools.Champions.Add(card);
                         break;
                     case CardType.Monster:
-                        pools.Units.Add(card);
-                        break;
-                    case CardType.TrainRoomAttachment:
-                        pools.Rooms.Add(card);
+                        Add(pools, new DonorKey(type, rarity, card.IsBannerUnitCard()), card);
                         break;
                 }
             }
             return pools;
+        }
+
+        private static void Add(DonorPools pools, DonorKey key, CardData card)
+        {
+            if (!pools.ByKey.TryGetValue(key, out var list))
+            {
+                list = [];
+                pools.ByKey[key] = list;
+            }
+            list.Add(card);
         }
 
         private static List<CardUpgradeData> BuildChampionUpgradePool(AllGameData all)
@@ -216,12 +286,38 @@ namespace Random_Clan.Plugin
             return Environment.TickCount;
         }
 
+        private readonly struct DonorKey : IEquatable<DonorKey>
+        {
+            public DonorKey(CardType type, CollectableRarity rarity, bool banner)
+            {
+                Type = type;
+                Rarity = rarity;
+                Banner = banner;
+            }
+
+            public CardType Type { get; }
+            public CollectableRarity Rarity { get; }
+            public bool Banner { get; }
+
+            public bool Equals(DonorKey other)
+                => Type == other.Type && Rarity == other.Rarity && Banner == other.Banner;
+
+            public override bool Equals(object? obj) => obj is DonorKey other && Equals(other);
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    return ((int)Type * 397) ^ ((int)Rarity * 397) ^ (Banner ? 1 : 0);
+                }
+            }
+        }
+
         private sealed class DonorPools
         {
-            public List<CardData> Spells { get; } = [];
-            public List<CardData> Units { get; } = [];
+            public Dictionary<DonorKey, List<CardData>> ByKey { get; } = new();
+            public List<CardData> Starters { get; } = [];
             public List<CardData> Champions { get; } = [];
-            public List<CardData> Rooms { get; } = [];
         }
     }
 }

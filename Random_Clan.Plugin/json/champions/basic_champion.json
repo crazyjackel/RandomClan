@@ -14,8 +14,13 @@
       "class": "@ClassBasic",
       "targets_room": true,
       "targetless": false,
-      "effects": [ "@SpawnChampionA" ],
-      "traits": [ "@Randomized", "@ChampionModifier3" ]
+      "effects": [
+        "@SpawnChampionA"
+      ],
+      "traits": [
+        "@Randomized",
+        "@ChampionModifier5"
+      ]
     }
   ],
   "characters": [
@@ -29,61 +34,90 @@
       "size": 3,
       "health": 10,
       "attack_damage": 10,
-      "subtypes": [ "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34" ]
+      "subtypes": [
+        "SubtypesData_Champion_83f21cbe-9d9b-4566-a2c3-ca559ab8ff34"
+      ]
     }
   ],
   "upgrades": [
     {
       "id": "ChampionAPathA1",
-      "titles": { "english": "Unplanned Growth", "chinese": "无计划生长" },
+      "titles": {
+        "english": "Unplanned Growth",
+        "chinese": "无计划生长"
+      },
       "bonus_damage": 30,
       "bonus_hp": 30
     },
     {
       "id": "ChampionAPathA2",
-      "titles": { "english": "Unplanned Surge", "chinese": "无计划爆发" },
+      "titles": {
+        "english": "Unplanned Surge",
+        "chinese": "无计划爆发"
+      },
       "bonus_damage": 90,
       "bonus_hp": 60
     },
     {
       "id": "ChampionAPathA3",
-      "titles": { "english": "Unplanned Apotheosis", "chinese": "无计划升华" },
+      "titles": {
+        "english": "Unplanned Apotheosis",
+        "chinese": "无计划升华"
+      },
       "bonus_damage": 270,
       "bonus_hp": 120
     },
     {
       "id": "ChampionAPathB1",
-      "titles": { "english": "Fortuitous Edge", "chinese": "侥幸锋刃" },
+      "titles": {
+        "english": "Fortuitous Edge",
+        "chinese": "侥幸锋刃"
+      },
       "bonus_damage": 40,
       "bonus_hp": 20
     },
     {
       "id": "ChampionAPathB2",
-      "titles": { "english": "Fortuitous Tempest", "chinese": "侥幸风暴" },
+      "titles": {
+        "english": "Fortuitous Tempest",
+        "chinese": "侥幸风暴"
+      },
       "bonus_damage": 110,
       "bonus_hp": 40
     },
     {
       "id": "ChampionAPathB3",
-      "titles": { "english": "Fortuitous Ruin", "chinese": "侥幸毁灭" },
+      "titles": {
+        "english": "Fortuitous Ruin",
+        "chinese": "侥幸毁灭"
+      },
       "bonus_damage": 300,
       "bonus_hp": 80
     },
     {
       "id": "ChampionAPathC1",
-      "titles": { "english": "Arbitrary Ward", "chinese": "任意护佑" },
+      "titles": {
+        "english": "Arbitrary Ward",
+        "chinese": "任意护佑"
+      },
       "bonus_damage": 20,
       "bonus_hp": 40
     },
     {
       "id": "ChampionAPathC2",
-      "titles": { "english": "Arbitrary Bastion", "chinese": "任意堡垒" },
+      "titles": {
+        "english": "Arbitrary Bastion",
+        "chinese": "任意堡垒"
+      },
       "bonus_damage": 60,
       "bonus_hp": 100
     },
     {
       "id": "ChampionAPathC3",
-      "titles": { "english": "Arbitrary Eternity", "chinese": "任意永恒" },
+      "titles": {
+        "english": "Arbitrary Eternity",
+        "chinese": "任意永恒"
+      },
       "bonus_damage": 180,
       "bonus_hp": 200
     }

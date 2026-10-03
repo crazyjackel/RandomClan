@@ -23,7 +23,7 @@
       ],
       "traits": [
         "@Randomized",
-        "@UnitModifier3"
+        "@UnitModifier5"
       ]
     }
   ],

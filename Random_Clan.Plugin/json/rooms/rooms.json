@@ -46,7 +46,7 @@
       ],
       "traits": [
         "@Randomized",
-        "@RoomModifier2"
+        "@RoomModifier3"
       ],
       "pools": [
         "MegaPool",
@@ -73,7 +73,7 @@
       ],
       "traits": [
         "@Randomized",
-        "@RoomModifier3"
+        "@RoomModifier5"
       ],
       "pools": [
         "MegaPool",
