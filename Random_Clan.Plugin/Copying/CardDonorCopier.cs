@@ -7,6 +7,8 @@ namespace Random_Clan.Plugin.Copying
 {
     public sealed class CardDonorCopier
     {
+        private readonly GlitchedArtFactory _glitchedArt = new();
+
         public void CopyOnto(CardData slot, CardData donor, IReadOnlyList<CardTraitData> markerTraits)
         {
             if (slot.GetCardTypeValue() == CardType.Monster)
@@ -69,17 +71,18 @@ namespace Random_Clan.Plugin.Copying
             if (rarity != null)
                 slot.SetRarityObject(rarity);
             slot.SetCost(donor.GetCostValue());
-            slot.CopyCardArtFrom(donor);
 
             var slotChar = slot.GetSpawnCharacterData();
             var donorChar = donor.GetSpawnCharacterData();
             if (slotChar == null || donorChar == null)
             {
                 Plugin.Logger.LogWarning($"Unit copy skipped character: {slot.name} <- {donor.name}");
+                slot.CopyCardArtFrom(donor);
                 return;
             }
 
             CopyCharacterMechanics(slotChar, donorChar, slot);
+            _glitchedArt.Apply(slot, donor, slotChar, donorChar);
         }
 
         private void CopyCharacterMechanics(CharacterData slot, CharacterData donor, CardData slotCard)
@@ -104,9 +107,6 @@ namespace Random_Clan.Plugin.Copying
             else
                 slot.SetUnitAbility(null);
 
-            var art = AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.GetValue(donor);
-            if (art != null)
-                AccessTools.Field(typeof(CharacterData), "characterPrefabVariantRef")?.SetValue(slot, art);
             foreach (var vfx in new[] { "attackVFX", "impactVFX", "deathVFX" })
             {
                 var field = AccessTools.Field(typeof(CharacterData), vfx);
@@ -116,7 +116,7 @@ namespace Random_Clan.Plugin.Copying
             }
         }
 
-        private static CardData CloneAbilityCard(CardData donorAbility, string name)
+        public static CardData CloneAbilityCard(CardData donorAbility, string name)
         {
             // Instantiate preserves CardData asset fields (VFX, art, etc.) that CreateInstance leaves null.
             var clone = UnityEngine.Object.Instantiate(donorAbility);

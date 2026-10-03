@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Random_Clan.Plugin.Constants
 {
     public static class ModificationTuning
@@ -10,6 +12,19 @@ namespace Random_Clan.Plugin.Constants
         public static readonly int[] SizeSteps = [-2, -1, 1, 2];
         public const int MinSize = 1;
         public const int MaxSize = 6;
+
+        /// <summary>CardEffects Distortion = 2 (CardEffectsMaterial.EffectType).</summary>
+        public const int CardDistortionEffectType = 2;
+        public const int CardEffectsMaxLayers = 8;
+        public const string CardEffectsShaderName = "Shiny Shoe/CardEffects";
+        public const string CardEffectsTemplateMaterialName = "CardMaterial_PunkrockReveler";
+
+        public static readonly Color CardGlitchLayerTint = new(0.55f, 1.15f, 1.35f, 1f);
+        public static readonly Vector2 CardGlitchLinearSpeed = new(0.35f, -0.2f);
+        public static readonly Vector2 CardGlitchScale = new(1.15f, 1.15f);
+
+        public static readonly Color CharacterGlitchTint = new(0.65f, 1.25f, 1.45f, 1f);
+        public const float CharacterGlitchGrayscale = 0.35f;
     }
 }
 

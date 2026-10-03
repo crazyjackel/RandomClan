@@ -12,15 +12,30 @@ namespace Random_Clan.Plugin.Modifications
         public ModificationRegistry()
         {
             Register(new CostAdjustmentModification());
-            Register(new NumberAdjustmentModification());
-            Register(new StatusCountModification());
-            Register(new StatusSwapModification());
+            Register(new NumberFixedModification());
+            Register(new NumberScaledModification());
+            Register(new CardStatusCountModification());
+            Register(new CardStatusSwapModification());
+            Register(new CardTriggerTypeModification());
             Register(new TraitParamModification());
+            Register(new TraitInjectModification());
+            Register(new TraitRemoveModification());
+
+            Register(new AbilityStatusCountModification());
+            Register(new AbilityStatusSwapModification());
+            Register(new StartingStatusCountModification());
+            Register(new StartingStatusSwapModification());
+            Register(new StartingStatusInjectModification());
+            Register(new AbilitySwapModification());
+            Register(new CharacterTriggerTypeModification());
+            Register(new SubtypeAddModification());
+            Register(new SubtypeRemoveModification());
             Register(new HealthFixedModification());
             Register(new HealthMultiplicativeModification());
             Register(new AttackFixedModification());
             Register(new AttackMultiplicativeModification());
             Register(new SizeFixedModification());
+
             Register(new RoomUpgradeNumberModification());
             Register(new ChampionUpgradeTreeModification());
         }
