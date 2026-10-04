@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "FickleTempestCardSprite",
-      "path": "textures/card_art/BasicCommonSpell.png"
+      "path": "textures/card_art/FickleTempest.png"
     }
   ]
 }

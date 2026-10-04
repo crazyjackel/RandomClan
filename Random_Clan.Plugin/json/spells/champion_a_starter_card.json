@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "ChampionAStarterCardCardSprite",
-      "path": "textures/card_art/ChampionAStarter.png"
+      "path": "textures/card_art/ChampionAStarterCard.png"
     }
   ]
 }

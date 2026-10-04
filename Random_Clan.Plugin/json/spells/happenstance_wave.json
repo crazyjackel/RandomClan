@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "HappenstanceWaveCardSprite",
-      "path": "textures/card_art/BasicCommonSpell.png"
+      "path": "textures/card_art/HappenstanceWave.png"
     }
   ]
 }

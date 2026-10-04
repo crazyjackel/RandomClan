@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "UnfixedBlightCardSprite",
-      "path": "textures/card_art/BasicCommonSpell.png"
+      "path": "textures/card_art/UnfixedBlight.png"
     }
   ]
 }

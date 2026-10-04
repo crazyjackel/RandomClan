@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "RouletteLanceCardSprite",
-      "path": "textures/card_art/BasicCommonSpell.png"
+      "path": "textures/card_art/RouletteLance.png"
     }
   ]
 }

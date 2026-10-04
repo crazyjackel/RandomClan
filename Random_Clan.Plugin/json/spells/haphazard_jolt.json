@@ -37,7 +37,7 @@
   "sprites": [
     {
       "id": "HaphazardJoltCardSprite",
-      "path": "textures/card_art/BasicCommonSpell.png"
+      "path": "textures/card_art/HaphazardJolt.png"
     }
   ]
 }
