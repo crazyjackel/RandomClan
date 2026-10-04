@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "VagrantTickCardSprite",
-      "path": "textures/card_art/BasicDraftUnit.png"
+      "path": "textures/card_art/VagrantTick.png"
     },
     {
       "id": "VagrantTickCharacterSprite",
-      "path": "textures/character_art/BasicDraftUnit.png"
+      "path": "textures/character_art/VagrantTick.png"
     }
   ]
 }

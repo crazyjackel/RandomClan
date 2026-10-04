@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "UnmooredImpCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "path": "textures/card_art/UnmooredImp.png"
     },
     {
       "id": "UnmooredImpCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "path": "textures/character_art/UnmooredImp.png"
     }
   ]
 }

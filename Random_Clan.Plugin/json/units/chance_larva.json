@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "ChanceLarvaCardSprite",
-      "path": "textures/card_art/BasicDraftUnit.png"
+      "path": "textures/card_art/ChanceLarva.png"
     },
     {
       "id": "ChanceLarvaCharacterSprite",
-      "path": "textures/character_art/BasicDraftUnit.png"
+      "path": "textures/character_art/ChanceLarva.png"
     }
   ]
 }

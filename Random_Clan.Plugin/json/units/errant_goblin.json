@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "ErrantGoblinCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "path": "textures/card_art/ErrantGoblin.png"
     },
     {
       "id": "ErrantGoblinCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "path": "textures/character_art/ErrantGoblin.png"
     }
   ]
 }

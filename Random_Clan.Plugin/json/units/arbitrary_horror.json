@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "ArbitraryHorrorCardSprite",
-      "path": "textures/card_art/BasicAbilityUnit.png"
+      "path": "textures/card_art/ArbitraryHorror.png"
     },
     {
       "id": "ArbitraryHorrorCharacterSprite",
-      "path": "textures/character_art/BasicAbilityUnit.png"
+      "path": "textures/character_art/ArbitraryHorror.png"
     }
   ]
 }

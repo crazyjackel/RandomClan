@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "MislaidGremlinCardSprite",
-      "path": "textures/card_art/BasicDraftUnit.png"
+      "path": "textures/card_art/MislaidGremlin.png"
     },
     {
       "id": "MislaidGremlinCharacterSprite",
-      "path": "textures/character_art/BasicDraftUnit.png"
+      "path": "textures/character_art/MislaidGremlin.png"
     }
   ]
 }

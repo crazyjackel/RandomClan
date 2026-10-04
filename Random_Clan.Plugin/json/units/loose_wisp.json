@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "LooseWispCardSprite",
-      "path": "textures/card_art/BasicDraftUnit.png"
+      "path": "textures/card_art/LooseWisp.png"
     },
     {
       "id": "LooseWispCharacterSprite",
-      "path": "textures/character_art/BasicDraftUnit.png"
+      "path": "textures/character_art/LooseWisp.png"
     }
   ]
 }

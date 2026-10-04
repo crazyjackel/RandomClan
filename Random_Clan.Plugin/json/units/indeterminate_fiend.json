@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "IndeterminateFiendCardSprite",
-      "path": "textures/card_art/BasicAbilityUnit.png"
+      "path": "textures/card_art/IndeterminateFiend.png"
     },
     {
       "id": "IndeterminateFiendCharacterSprite",
-      "path": "textures/character_art/BasicAbilityUnit.png"
+      "path": "textures/character_art/IndeterminateFiend.png"
     }
   ]
 }

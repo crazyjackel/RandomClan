@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "WanderingBruteCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "path": "textures/card_art/WanderingBrute.png"
     },
     {
       "id": "WanderingBruteCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "path": "textures/character_art/WanderingBrute.png"
     }
   ]
 }

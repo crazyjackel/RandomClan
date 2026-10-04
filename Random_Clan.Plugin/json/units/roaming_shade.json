@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "RoamingShadeCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "path": "textures/card_art/RoamingShade.png"
     },
     {
       "id": "RoamingShadeCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "path": "textures/character_art/RoamingShade.png"
     }
   ]
 }

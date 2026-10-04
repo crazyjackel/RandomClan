@@ -72,11 +72,11 @@
   "sprites": [
     {
       "id": "WaywardGruntCardSprite",
-      "path": "textures/card_art/BasicDraftUnit.png"
+      "path": "textures/card_art/WaywardGrunt.png"
     },
     {
       "id": "WaywardGruntCharacterSprite",
-      "path": "textures/character_art/BasicDraftUnit.png"
+      "path": "textures/character_art/WaywardGrunt.png"
     }
   ]
 }

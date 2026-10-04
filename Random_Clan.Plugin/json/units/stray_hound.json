@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "StrayHoundCardSprite",
-      "path": "textures/card_art/BasicBannerUnit.png"
+      "path": "textures/card_art/StrayHound.png"
     },
     {
       "id": "StrayHoundCharacterSprite",
-      "path": "textures/character_art/BasicBannerUnit.png"
+      "path": "textures/character_art/StrayHound.png"
     }
   ]
 }

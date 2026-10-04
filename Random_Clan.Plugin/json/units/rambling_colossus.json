@@ -74,11 +74,11 @@
   "sprites": [
     {
       "id": "RamblingColossusCardSprite",
-      "path": "textures/card_art/BasicAbilityUnit.png"
+      "path": "textures/card_art/RamblingColossus.png"
     },
     {
       "id": "RamblingColossusCharacterSprite",
-      "path": "textures/character_art/BasicAbilityUnit.png"
+      "path": "textures/character_art/RamblingColossus.png"
     }
   ]
 }
