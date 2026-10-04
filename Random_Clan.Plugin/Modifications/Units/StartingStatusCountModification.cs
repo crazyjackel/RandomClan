@@ -1,5 +1,3 @@
-using Random_Clan.Plugin.Extensions;
-
 namespace Random_Clan.Plugin.Modifications.Units
 {
     public sealed class StartingStatusCountModification : ICardModification
@@ -11,7 +9,7 @@ namespace Random_Clan.Plugin.Modifications.Units
         {
             var character = ctx.Character ?? card.GetSpawnCharacterData();
             if (character != null)
-                StatusModificationHelper.TryAdjustSingleStartingStatus(character, rng, swap: false);
+                StatusModificationHelper.TryAdjustSingleStartingStatus(character, ctx, rng, swap: false);
         }
     }
 }

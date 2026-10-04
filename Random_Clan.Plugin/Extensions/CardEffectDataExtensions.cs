@@ -21,5 +21,22 @@ namespace Random_Clan.Plugin.Extensions
 
         public static void SetCardUpgrade(this CardEffectData effect, CardUpgradeData upgrade)
             => AccessTools.Field(typeof(CardEffectData), "paramCardUpgradeData")?.SetValue(effect, upgrade);
+
+        public static Team.Type GetTargetTeamType(this CardEffectData effect)
+        {
+            var field = AccessTools.Field(typeof(CardEffectData), "targetTeamType");
+            return field?.GetValue(effect) is Team.Type team ? team : Team.Type.None;
+        }
+
+        /// <summary>
+        /// Allies (monsters) favor buffs; enemies (heroes) favor debuffs. Unknown defaults to buffs.
+        /// </summary>
+        public static bool FavorsPositiveStatuses(this CardEffectData effect)
+        {
+            var team = effect.GetTargetTeamType();
+            if (team == Team.Type.Heroes)
+                return false;
+            return true;
+        }
     }
 }

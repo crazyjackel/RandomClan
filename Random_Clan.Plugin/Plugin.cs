@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Random_Clan.Plugin.Copying;
@@ -70,8 +70,7 @@ namespace Random_Clan.Plugin
                         "json/units/arbitrary_horror.json",
                         "json/units/stochastic_beast.json",
                         "json/rooms/rooms.json",
-                        "json/equipment/basic_equipment.json",
-                        "json/enhancers/basic_enhancer.json"
+                        "json/equipment/basic_equipment.json"
                     );
                 }
             );

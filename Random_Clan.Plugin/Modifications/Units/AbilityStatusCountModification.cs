@@ -14,7 +14,7 @@ namespace Random_Clan.Plugin.Modifications.Units
         {
             var ability = ctx.Character?.GetUnitAbilityCardData() ?? card.GetSpawnCharacterData()?.GetUnitAbilityCardData();
             if (ability != null)
-                StatusModificationHelper.TryAdjustSingleCardStatus(ability, rng, swap: false);
+                StatusModificationHelper.TryAdjustSingleCardStatus(ability, ctx, rng, swap: false);
         }
     }
 }

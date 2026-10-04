@@ -13,6 +13,10 @@ namespace Random_Clan.Plugin.Modifications.Units
             if (character == null || ctx.StatusIds.Count == 0)
                 return;
 
+            var statusId = ctx.PickStatusId(rng, favorPositive: true);
+            if (statusId == null)
+                return;
+
             var existing = character.GetStartingStatusEffectsArray();
             var next = new StatusEffectStackData[existing.Length + 1];
             for (var i = 0; i < existing.Length; i++)
@@ -20,7 +24,7 @@ namespace Random_Clan.Plugin.Modifications.Units
 
             next[existing.Length] = new StatusEffectStackData
             {
-                statusId = ctx.StatusIds[rng.Next(ctx.StatusIds.Count)],
+                statusId = statusId,
                 count = Math.Max(1, 1.MutateBalanced(rng)),
             };
             character.SetStartingStatusEffectsArray(next);

@@ -1,3 +1,4 @@
+using Random_Clan.Plugin.Constants;
 using Random_Clan.Plugin.Extensions;
 using TrainworksReloaded.Base;
 using TrainworksReloaded.Base.Card;
@@ -11,6 +12,9 @@ namespace Random_Clan.Plugin.Modifications
     public sealed class RandomizeContext
     {
         private IReadOnlyList<string>? _statusIds;
+        private IReadOnlyList<string>? _positiveStatusIds;
+        private IReadOnlyList<string>? _negativeStatusIds;
+        private Dictionary<string, bool>? _statusIsPositive;
         private IReadOnlyList<CardTraitData>? _injectableTraits;
         private IReadOnlyList<CardData>? _abilityDonors;
         private IReadOnlyList<string>? _mutableSubtypeKeys;
@@ -47,7 +51,31 @@ namespace Random_Clan.Plugin.Modifications
 
         /// <summary>Statuses safe to inject/swap onto units and cards (visible, non-ability UI statuses).</summary>
         public IReadOnlyList<string> StatusIds
-            => _statusIds ??= BuildSafeStatusIds();
+        {
+            get
+            {
+                EnsureStatusPools();
+                return _statusIds!;
+            }
+        }
+
+        public IReadOnlyList<string> PositiveStatusIds
+        {
+            get
+            {
+                EnsureStatusPools();
+                return _positiveStatusIds!;
+            }
+        }
+
+        public IReadOnlyList<string> NegativeStatusIds
+        {
+            get
+            {
+                EnsureStatusPools();
+                return _negativeStatusIds!;
+            }
+        }
 
         public IReadOnlyList<CardTraitData> InjectableTraits
             => _injectableTraits ??= BuildInjectableTraits();
@@ -65,36 +93,101 @@ namespace Random_Clan.Plugin.Modifications
         public IReadOnlyList<CardTriggerType> SwappableCardTriggers
             => _swappableCardTriggers ??= BuildSwappableCardTriggers();
 
-        private IReadOnlyList<string> BuildSafeStatusIds()
+        /// <summary>
+        /// Pick a status id tilting toward the favored polarity with BeneficialChance.
+        /// </summary>
+        public string? PickStatusId(Random rng, bool favorPositive)
         {
-            var ids = new List<string>();
+            EnsureStatusPools();
+            if (_statusIds!.Count == 0)
+                return null;
+
+            var favored = favorPositive ? _positiveStatusIds! : _negativeStatusIds!;
+            var other = favorPositive ? _negativeStatusIds! : _positiveStatusIds!;
+            var useFavored = rng.NextDouble() < ModificationTuning.BeneficialChance;
+            var pool = useFavored ? favored : other;
+            if (pool.Count == 0)
+                pool = _statusIds;
+            return pool[rng.Next(pool.Count)];
+        }
+
+        /// <summary>
+        /// Pool for status swaps: favored polarity when possible, else full list.
+        /// </summary>
+        public IReadOnlyList<string> GetStatusSwapPool(Random rng, bool favorPositive)
+        {
+            EnsureStatusPools();
+            var favored = favorPositive ? _positiveStatusIds! : _negativeStatusIds!;
+            var other = favorPositive ? _negativeStatusIds! : _positiveStatusIds!;
+            var useFavored = rng.NextDouble() < ModificationTuning.BeneficialChance;
+            var pool = useFavored ? favored : other;
+            if (pool.Count < 2)
+                pool = _statusIds!;
+            return pool;
+        }
+
+        /// <returns>true if positive, false if negative, null if unknown/unbucketed.</returns>
+        public bool? IsPositiveStatus(string statusId)
+        {
+            EnsureStatusPools();
+            if (_statusIsPositive!.TryGetValue(statusId, out var positive))
+                return positive;
+            return null;
+        }
+
+        private void EnsureStatusPools()
+        {
+            if (_statusIds != null)
+                return;
+
+            var all = new List<string>();
+            var positive = new List<string>();
+            var negative = new List<string>();
+            var polarity = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+
             try
             {
-                var all = StatusEffectManager.Instance?.GetAllStatusEffectsData()?.GetStatusEffectData();
-                if (all == null)
-                    return ids;
-
-                foreach (var data in all)
+                var effectData = StatusEffectManager.Instance?.GetAllStatusEffectsData()?.GetStatusEffectData();
+                if (effectData != null)
                 {
-                    if (data == null || data.IsHidden())
-                        continue;
+                    foreach (var data in effectData)
+                    {
+                        if (data == null || data.IsHidden())
+                            continue;
 
-                    var id = data.GetStatusId();
-                    if (string.IsNullOrEmpty(id))
-                        continue;
-                    if (id.Equals("unit_ability", StringComparison.OrdinalIgnoreCase))
-                        continue;
-                    if (data.GetDisplayCategory() == StatusEffectData.DisplayCategory.Ability)
-                        continue;
+                        var id = data.GetStatusId();
+                        if (string.IsNullOrEmpty(id))
+                            continue;
+                        if (id.Equals("unit_ability", StringComparison.OrdinalIgnoreCase))
+                            continue;
+                        if (data.GetDisplayCategory() == StatusEffectData.DisplayCategory.Ability)
+                            continue;
 
-                    ids.Add(id);
+                        all.Add(id);
+
+                        switch (data.GetDisplayCategory())
+                        {
+                            case StatusEffectData.DisplayCategory.Positive:
+                                positive.Add(id);
+                                polarity[id] = true;
+                                break;
+                            case StatusEffectData.DisplayCategory.Negative:
+                                negative.Add(id);
+                                polarity[id] = false;
+                                break;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Plugin.Logger.LogWarning($"Failed building safe status ids: {ex.Message}");
             }
-            return ids;
+
+            _statusIds = all;
+            _positiveStatusIds = positive;
+            _negativeStatusIds = negative;
+            _statusIsPositive = polarity;
         }
 
         private IReadOnlyList<CardTraitData> BuildInjectableTraits()

@@ -6,9 +6,31 @@ namespace Random_Clan.Plugin.Extensions
     {
         public static int MutateBalanced(this int value, Random rng)
         {
-            if (rng.NextDouble() < 0.5)
+            if (rng.NextDouble() < ModificationTuning.BalancedFixedChance)
                 return value.MutateFixed(rng, ModificationTuning.NumberSteps);
             return value.MutateScaled(rng, ModificationTuning.NumberScales);
+        }
+
+        /// <summary>
+        /// Mutate with ~BeneficialChance of moving in the favored direction (up or down).
+        /// </summary>
+        public static int MutateToward(this int value, Random rng, bool favorIncrease)
+        {
+            var useFavored = rng.NextDouble() < ModificationTuning.BeneficialChance;
+            var increase = useFavored ? favorIncrease : !favorIncrease;
+
+            if (rng.NextDouble() < ModificationTuning.BalancedFixedChance)
+            {
+                var steps = increase
+                    ? ModificationTuning.NumberStepsUp
+                    : ModificationTuning.NumberStepsDown;
+                return value.MutateFixed(rng, steps);
+            }
+
+            var scales = increase
+                ? ModificationTuning.NumberScalesUp
+                : ModificationTuning.NumberScalesDown;
+            return value.MutateScaled(rng, scales);
         }
 
         public static int MutateFixed(this int value, Random rng)

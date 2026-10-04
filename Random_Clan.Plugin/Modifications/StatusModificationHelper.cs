@@ -12,16 +12,17 @@ namespace Random_Clan.Plugin.Modifications
 
         public static bool TryAdjustSingleCardStatus(
             CardData card,
+            RandomizeContext ctx,
             Random rng,
-            bool swap,
-            IReadOnlyList<string>? statusIds = null)
+            bool swap)
         {
             var entries = CollectCardEntries(card);
             if (entries.Count == 0)
                 return false;
 
             var (effect, statuses, index) = entries[rng.Next(entries.Count)];
-            if (!AdjustEntry(statuses, index, rng, swap, statusIds))
+            var favorPositive = effect.FavorsPositiveStatuses();
+            if (!AdjustEntry(statuses, index, ctx, rng, swap, favorPositive))
                 return false;
 
             effect.SetStatusEffects(statuses);
@@ -30,16 +31,17 @@ namespace Random_Clan.Plugin.Modifications
 
         public static bool TryAdjustSingleStartingStatus(
             CharacterData character,
+            RandomizeContext ctx,
             Random rng,
-            bool swap,
-            IReadOnlyList<string>? statusIds = null)
+            bool swap)
         {
             var statuses = character.GetStartingStatusEffectsArray();
             if (statuses.Length == 0)
                 return false;
 
             var index = rng.Next(statuses.Length);
-            if (!AdjustEntry(statuses, index, rng, swap, statusIds))
+            // Player units favor buffs / fewer debuff stacks.
+            if (!AdjustEntry(statuses, index, ctx, rng, swap, favorPositive: true))
                 return false;
 
             character.SetStartingStatusEffectsArray(statuses);
@@ -70,22 +72,35 @@ namespace Random_Clan.Plugin.Modifications
         private static bool AdjustEntry(
             StatusEffectStackData[] statuses,
             int index,
+            RandomizeContext ctx,
             Random rng,
             bool swap,
-            IReadOnlyList<string>? statusIds)
+            bool favorPositive)
         {
             if (swap)
             {
-                if (statusIds == null || statusIds.Count < 2)
+                var pool = ctx.GetStatusSwapPool(rng, favorPositive);
+                if (pool.Count < 2)
                     return false;
-                var next = statuses[index].statusId.TrySwapStatus(rng, statusIds);
+                var next = statuses[index].statusId.TrySwapStatus(rng, pool);
                 if (next == null)
                     return false;
                 statuses[index].statusId = next;
                 return true;
             }
 
-            statuses[index].count = Math.Max(1, Math.Max(1, statuses[index].count).MutateBalanced(rng));
+            var polarity = ctx.IsPositiveStatus(statuses[index].statusId);
+            var count = Math.Max(1, statuses[index].count);
+            if (polarity is bool isPositive)
+            {
+                // Good for player: raise stacks that match favored polarity, lower the opposite.
+                var favorIncrease = isPositive == favorPositive;
+                statuses[index].count = count.MutateToward(rng, favorIncrease);
+            }
+            else
+            {
+                statuses[index].count = count.MutateBalanced(rng);
+            }
             return true;
         }
     }

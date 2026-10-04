@@ -6,6 +6,6 @@ namespace Random_Clan.Plugin.Modifications.Cards
             => StatusModificationHelper.HasCardStatusEntries(card);
 
         public void Modify(CardData card, RandomizeContext ctx, Random rng)
-            => StatusModificationHelper.TryAdjustSingleCardStatus(card, rng, swap: false);
+            => StatusModificationHelper.TryAdjustSingleCardStatus(card, ctx, rng, swap: false);
     }
 }

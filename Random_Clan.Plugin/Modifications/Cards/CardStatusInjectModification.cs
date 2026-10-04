@@ -24,13 +24,17 @@ namespace Random_Clan.Plugin.Modifications.Cards
 
             var effect = candidates[rng.Next(candidates.Count)];
             var existing = effect.GetStatusEffects() ?? [];
+            var statusId = ctx.PickStatusId(rng, effect.FavorsPositiveStatuses());
+            if (statusId == null)
+                return;
+
             var next = new StatusEffectStackData[existing.Length + 1];
             for (var i = 0; i < existing.Length; i++)
                 next[i] = existing[i];
 
             next[existing.Length] = new StatusEffectStackData
             {
-                statusId = ctx.StatusIds[rng.Next(ctx.StatusIds.Count)],
+                statusId = statusId,
                 count = Math.Max(1, 1.MutateBalanced(rng)),
             };
             effect.SetStatusEffects(next);
