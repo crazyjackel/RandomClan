@@ -49,12 +49,20 @@ namespace Random_Clan.Plugin.Modifications
 
         public IReadOnlyList<ICardModification> All => _modifications;
 
-        public List<ICardModification> Pick(CardData card, RandomizeContext ctx, Random rng, int count)
+        public List<ICardModification> Pick(
+            CardData card,
+            RandomizeContext ctx,
+            Random rng,
+            int count,
+            Type? excludeType = null)
         {
             if (count <= 0)
                 return [];
 
-            var remaining = _modifications.Where(m => m.CanModify(card, ctx)).ToList();
+            var remaining = _modifications
+                .Where(m => m.CanModify(card, ctx))
+                .Where(m => excludeType == null || m.GetType() != excludeType)
+                .ToList();
             var picked = new List<ICardModification>(Math.Min(count, remaining.Count));
 
             while (picked.Count < count && remaining.Count > 0)

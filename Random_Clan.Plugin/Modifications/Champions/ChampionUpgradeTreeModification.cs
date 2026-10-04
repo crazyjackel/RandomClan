@@ -11,7 +11,61 @@ namespace Random_Clan.Plugin.Modifications.Champions
         public bool CanModify(CardData card, RandomizeContext ctx)
             => card.IsChampionCard() && ctx.ChampionUpgradePool.Count > 0;
 
+        /// <summary>Strip placeholder / prior-run paths so champion chaos never keeps defaults.</summary>
+        public static void ClearUpgradeTrees(CardData card, RandomizeContext ctx)
+        {
+            foreach (var champion in FindChampionEntries(card, ctx))
+            {
+                var tree = AccessTools.Field(typeof(ChampionData), "upgradeTree")?.GetValue(champion) as CardUpgradeTreeData;
+                if (tree == null)
+                    continue;
+
+                var empty = new List<CardUpgradeTreeData.UpgradeTree>(PathCount);
+                for (var path = 0; path < PathCount; path++)
+                {
+                    var upgradeTree = new CardUpgradeTreeData.UpgradeTree();
+                    AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades")
+                        ?.SetValue(upgradeTree, new List<CardUpgradeData>());
+                    empty.Add(upgradeTree);
+                }
+
+                AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.SetValue(tree, empty);
+            }
+        }
+
         public void Modify(CardData card, RandomizeContext ctx, Random rng)
+        {
+            ClearUpgradeTrees(card, ctx);
+
+            foreach (var champion in FindChampionEntries(card, ctx))
+            {
+                var tree = AccessTools.Field(typeof(ChampionData), "upgradeTree")?.GetValue(champion) as CardUpgradeTreeData;
+                if (tree == null)
+                    continue;
+
+                var available = ctx.ChampionUpgradePool.ToList();
+                Shuffle(available, rng);
+
+                var upgradeTrees = new List<CardUpgradeTreeData.UpgradeTree>(PathCount);
+                for (var path = 0; path < PathCount; path++)
+                {
+                    var picked = TakeUpgrades(available, ctx.ChampionUpgradePool, rng, TiersPerPath);
+                    picked.Sort((a, b) =>
+                        (a.GetBonusDamage() + a.GetBonusHP()).CompareTo(b.GetBonusDamage() + b.GetBonusHP()));
+
+                    var upgradeTree = new CardUpgradeTreeData.UpgradeTree();
+                    AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades")
+                        ?.SetValue(upgradeTree, picked);
+                    upgradeTrees.Add(upgradeTree);
+                }
+
+                AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.SetValue(tree, upgradeTrees);
+                Plugin.Logger.LogInfo(
+                    $"Champion tree cleared then rebuilt with {PathCount} paths x {TiersPerPath} tiers for {card.name}");
+            }
+        }
+
+        private static IEnumerable<ChampionData> FindChampionEntries(CardData card, RandomizeContext ctx)
         {
             foreach (var classData in ctx.SaveManager.GetAllGameData().GetAllClassDatas())
             {
@@ -21,32 +75,8 @@ namespace Random_Clan.Plugin.Modifications.Champions
 
                 foreach (var champion in champions)
                 {
-                    if (champion.championCardData != card)
-                        continue;
-
-                    var tree = AccessTools.Field(typeof(ChampionData), "upgradeTree")?.GetValue(champion) as CardUpgradeTreeData;
-                    if (tree == null)
-                        continue;
-
-                    var available = ctx.ChampionUpgradePool.ToList();
-                    Shuffle(available, rng);
-
-                    var upgradeTrees = new List<CardUpgradeTreeData.UpgradeTree>(PathCount);
-                    for (var path = 0; path < PathCount; path++)
-                    {
-                        var picked = TakeUpgrades(available, ctx.ChampionUpgradePool, rng, TiersPerPath);
-                        picked.Sort((a, b) =>
-                            (a.GetBonusDamage() + a.GetBonusHP()).CompareTo(b.GetBonusDamage() + b.GetBonusHP()));
-
-                        var upgradeTree = new CardUpgradeTreeData.UpgradeTree();
-                        AccessTools.Field(typeof(CardUpgradeTreeData.UpgradeTree), "cardUpgrades")
-                            ?.SetValue(upgradeTree, picked);
-                        upgradeTrees.Add(upgradeTree);
-                    }
-
-                    AccessTools.Field(typeof(CardUpgradeTreeData), "upgradeTrees")?.SetValue(tree, upgradeTrees);
-                    Plugin.Logger.LogInfo(
-                        $"Champion tree rebuilt with {PathCount} paths x {TiersPerPath} tiers for {card.name}");
+                    if (champion.championCardData == card)
+                        yield return champion;
                 }
             }
         }

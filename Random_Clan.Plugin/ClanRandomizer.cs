@@ -2,6 +2,7 @@ using HarmonyLib;
 using Random_Clan.Plugin.Copying;
 using Random_Clan.Plugin.Extensions;
 using Random_Clan.Plugin.Modifications;
+using Random_Clan.Plugin.Modifications.Champions;
 using Random_Clan.Plugin.Snapshots;
 using TrainworksReloaded.Base;
 using TrainworksReloaded.Base.Card;
@@ -112,7 +113,31 @@ namespace Random_Clan.Plugin
                 _copier.CopyOnto(slot, donor, markers);
 
                 ctx.Character = slot.GetSpawnCharacterData();
-                foreach (var mod in _modifications.Pick(slot, ctx, rng, slot.GetModifierCount()))
+
+                var remainingMods = slot.GetModifierCount();
+                if (slot.IsChampionCard())
+                {
+                    // Champion Chaos always clears placeholder paths first, then rebuilds from other clans.
+                    var treeMod = new ChampionUpgradeTreeModification();
+                    if (treeMod.CanModify(slot, ctx))
+                    {
+                        treeMod.Modify(slot, ctx, rng);
+                        Plugin.Logger.LogInfo($"  mod {nameof(ChampionUpgradeTreeModification)} (guaranteed first)");
+                        remainingMods = Math.Max(0, remainingMods - 1);
+                    }
+                    else
+                    {
+                        ChampionUpgradeTreeModification.ClearUpgradeTrees(slot, ctx);
+                        Plugin.Logger.LogInfo("  cleared champion upgrade trees (no donor pool)");
+                    }
+                }
+
+                foreach (var mod in _modifications.Pick(
+                             slot,
+                             ctx,
+                             rng,
+                             remainingMods,
+                             excludeType: slot.IsChampionCard() ? typeof(ChampionUpgradeTreeModification) : null))
                 {
                     mod.Modify(slot, ctx, rng);
                     Plugin.Logger.LogInfo($"  mod {mod.GetType().Name}");
