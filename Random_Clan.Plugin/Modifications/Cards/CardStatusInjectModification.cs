@@ -38,6 +38,7 @@ namespace Random_Clan.Plugin.Modifications.Cards
                 count = Math.Max(1, 1.MutateBalanced(rng)),
             };
             effect.SetStatusEffects(next);
+            ctx.Character?.EnsureMorselIfBuffet(statusId);
         }
     }
 }

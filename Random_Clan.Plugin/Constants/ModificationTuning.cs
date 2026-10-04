@@ -10,6 +10,9 @@ namespace Random_Clan.Plugin.Constants
         /// <summary>Chance MutateBalanced uses fixed steps (else scales).</summary>
         public const double BalancedFixedChance = 0.35;
 
+        /// <summary>Vanilla Buffet status id (unit can be eaten multiple times).</summary>
+        public const string BuffetStatusId = "eatmany";
+
         public static readonly int[] NumberSteps = [-2, -1, 1, 1, 2, 2];
         public static readonly float[] NumberScales = [0.5f, 1.5f, 1.5f, 2f, 2f];
         public static readonly int[] StatSteps = [-5, -3, -1, 1, 2, 3, 5, 5];

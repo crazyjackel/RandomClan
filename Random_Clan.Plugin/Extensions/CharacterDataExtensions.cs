@@ -1,9 +1,11 @@
 using HarmonyLib;
+using Random_Clan.Plugin.Constants;
 
 namespace Random_Clan.Plugin.Extensions
 {
     public static class CharacterDataExtensions
     {
+        private static string? _morselSubtypeKey;
         public static void SetHealth(this CharacterData character, int health)
             => AccessTools.Field(typeof(CharacterData), "health")?.SetValue(character, health);
 
@@ -47,6 +49,50 @@ namespace Random_Clan.Plugin.Extensions
             var value = field.GetValue(donor);
             if (value is Array arr)
                 field.SetValue(slot, arr.Clone());
+        }
+
+        /// <summary>
+        /// Buffet units are eaten like morsels; ensure the Morsel subtype is present.
+        /// </summary>
+        public static void EnsureMorselIfBuffet(this CharacterData? character, string? statusId)
+        {
+            if (character == null || string.IsNullOrEmpty(statusId))
+                return;
+            if (!statusId.Equals(ModificationTuning.BuffetStatusId, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            var morselKey = ResolveMorselSubtypeKey();
+            if (morselKey == null)
+                return;
+
+            var existing = character.GetSubtypeKeys();
+            if (existing.Any(s => s.Equals(morselKey, StringComparison.OrdinalIgnoreCase)))
+                return;
+
+            var next = new List<string>(existing) { morselKey };
+            character.SetSubtypeKeys(next);
+        }
+
+        private static string? ResolveMorselSubtypeKey()
+        {
+            if (_morselSubtypeKey != null)
+                return _morselSubtypeKey;
+
+            foreach (var subtype in SubtypeManager.AllData)
+            {
+                var key = subtype?.Key;
+                if (string.IsNullOrEmpty(key))
+                    continue;
+                if (key.Equals("SubtypesData_Morsel", StringComparison.OrdinalIgnoreCase)
+                    || key.EndsWith("_Morsel", StringComparison.OrdinalIgnoreCase)
+                    || key.Equals("Morsel", StringComparison.OrdinalIgnoreCase))
+                {
+                    _morselSubtypeKey = key;
+                    return key;
+                }
+            }
+
+            return null;
         }
     }
 }

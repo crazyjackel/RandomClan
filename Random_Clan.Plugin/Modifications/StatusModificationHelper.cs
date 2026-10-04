@@ -26,6 +26,8 @@ namespace Random_Clan.Plugin.Modifications
                 return false;
 
             effect.SetStatusEffects(statuses);
+            if (swap)
+                ctx.Character?.EnsureMorselIfBuffet(statuses[index].statusId);
             return true;
         }
 
@@ -45,6 +47,8 @@ namespace Random_Clan.Plugin.Modifications
                 return false;
 
             character.SetStartingStatusEffectsArray(statuses);
+            if (swap)
+                character.EnsureMorselIfBuffet(statuses[index].statusId);
             return true;
         }
 

@@ -96,6 +96,8 @@ namespace Random_Clan.Plugin.Copying
             }
             slot.SetTriggers(triggerClones);
             slot.CopyStartingStatusesFrom(donor);
+            foreach (var status in slot.GetStartingStatusEffectsArray())
+                slot.EnsureMorselIfBuffet(status?.statusId);
 
             var donorAbility = donor.GetUnitAbilityCardData();
             if (donorAbility != null)

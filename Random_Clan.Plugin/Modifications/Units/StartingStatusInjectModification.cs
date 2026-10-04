@@ -28,6 +28,7 @@ namespace Random_Clan.Plugin.Modifications.Units
                 count = Math.Max(1, 1.MutateBalanced(rng)),
             };
             character.SetStartingStatusEffectsArray(next);
+            character.EnsureMorselIfBuffet(statusId);
         }
     }
 }
